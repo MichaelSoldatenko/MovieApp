@@ -116,12 +116,17 @@
 }
 
 .navigation-div {
+  font-size: 14px;
   position: relative;
   box-sizing: border-box;
   width: 200px;
   height: 10vh;
   cursor: pointer;
   transition-duration: 0.3s;
+  background-image: url("../../public/movie-app-icon.png");
+  background-size: 27%;
+  background-repeat: no-repeat;
+  background-position-y: center;
 }
 
 .navigation-div.dark-theme:hover {

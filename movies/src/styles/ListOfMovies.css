@@ -251,3 +251,20 @@ body.light-theme {
 .title-h1.dark-theme {
   color: white;
 }
+
+.tmdb-footer {
+  margin-left: 30px;
+  text-align: left;
+}
+
+.tmdb-icon {
+  width: 100px;
+}
+
+.tmdb-p.light-theme {
+  color: black;
+}
+
+.tmdb-p.dark-theme {
+  color: white;
+}
