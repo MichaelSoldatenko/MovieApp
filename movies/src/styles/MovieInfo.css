@@ -1,0 +1,73 @@
+.movie-info-background {
+  width: 100%;
+  height: 105%;
+  z-index: 2;
+  position: absolute;
+  top: 10vh;
+  left: 0%;
+}
+
+.movie-info-background.light-theme {
+  background-color: rgba(216, 228, 244, 0.5);
+}
+
+.movie-info-background.dark-theme {
+  background-color: rgba(36, 40, 59, 0.5);
+}
+
+.movie-info-block {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin: 50px;
+  text-align: left;
+}
+
+.text {
+  position: absolute;
+  top: 0%;
+  left: 25%;
+}
+
+.similar-movies-h3 {
+  transition-duration: 0.5s;
+  margin-top: 50px;
+}
+
+.similar-movies-h3.light-theme {
+  color: black;
+}
+
+.similar-movies-h3.dark-theme {
+  color: white;
+}
+
+.title-text {
+  display: inline-block;
+  backdrop-filter: blur(5px);
+  margin-right: 5px;
+}
+
+.main-text {
+  display: inline-block;
+  backdrop-filter: blur(5px);
+}
+
+.main-text.light-theme {
+  color: black;
+}
+
+.main-text.dark-theme {
+  color: white;
+}
+
+.title-text.light-theme {
+  color: rgb(70, 70, 70);
+}
+
+.title-text.dark-theme {
+  color: rgb(174, 174, 174);
+}
+
+.movie-poster-small {
+  width: 25%;
+  border: solid;
+}

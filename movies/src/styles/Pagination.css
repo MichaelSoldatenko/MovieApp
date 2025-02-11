@@ -1,0 +1,44 @@
+.pagination {
+  margin-bottom: 20px;
+}
+
+.pagination-btns {
+  transition-duration: 0.5s;
+  border: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.pagination-btns.pagination-btns.light-theme:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.pagination-btns.pagination-btns.dark-theme:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.pagination-btns.light-theme {
+  background-color: white;
+  color: black;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
+}
+
+.pagination-btns.dark-theme {
+  background-color: rgb(26, 27, 38);
+  color: rgb(169, 177, 214);
+}
+
+#pagination-span {
+  transition-duration: 0.5s;
+  padding: 10px;
+}
+
+#pagination-span.light-theme {
+  color: black;
+}
+
+#pagination-span.dark-theme {
+  color: rgb(169, 177, 214);
+}

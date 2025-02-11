@@ -1,0 +1,39 @@
+#sorting-select {
+  transition-duration: 0.5s;
+  position: absolute;
+  top: 40%;
+  left: 3.5%;
+  border: none;
+  width: 150px;
+  height: 30px;
+  border-radius: 5px;
+  padding-left: 5px;
+  cursor: pointer;
+  transition: width 0.3s ease, transform 0.3s ease;
+}
+
+#sorting-select:hover {
+  transform: scale(1.05);
+}
+
+#sorting-select.light-theme {
+  background-color: white;
+  color: black;
+}
+
+#sorting-select.dark-theme {
+  background-color: rgb(26, 27, 38);
+  color: rgb(169, 177, 214);
+}
+
+.sorting-option {
+  transition-duration: 0.5s;
+}
+
+.sorting-option.light-theme {
+  background-color: white;
+}
+
+.sorting-option.dark-theme {
+  background-color: rgb(26, 27, 38);
+}

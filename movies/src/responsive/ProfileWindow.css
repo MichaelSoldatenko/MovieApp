@@ -1,0 +1,83 @@
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+  .profile-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .profile-window-img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .profile-text {
+    font-size: 14px;
+  }
+
+  .login-btn {
+    border-radius: 3px;
+    width: 100px;
+    height: 40px;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+  .profile-btn {
+    width: 35px;
+    height: 35px;
+  }
+
+  .profile-window-img {
+    width: 35px;
+    height: 35px;
+  }
+
+  .profile-div {
+    box-sizing: border-box;
+    transition-duration: 0.5s;
+    position: absolute;
+    top: 95%;
+    right: 4%;
+    border-radius: 4px;
+  }
+
+  .profile-text {
+    font-size: 12px;
+  }
+
+  .login-btn {
+    border-radius: 3px;
+    width: 90px;
+    height: 35px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .profile-btn {
+    width: 35px;
+    height: 35px;
+  }
+
+  .profile-window-img {
+    width: 35px;
+    height: 35px;
+  }
+
+  .profile-div {
+    box-sizing: border-box;
+    transition-duration: 0.5s;
+    position: absolute;
+    top: 95%;
+    right: 4%;
+    border-radius: 4px;
+  }
+
+  .profile-text {
+    font-size: 10px;
+  }
+
+  .login-btn {
+    border-radius: 3px;
+    width: 90px;
+    height: 35px;
+  }
+}

@@ -1,0 +1,284 @@
+@media only screen and (max-width: 1200px) {
+  .movie-info-background {
+    top: 9vh;
+  }
+
+  .movie-info-block {
+    font-size: 15px;
+  }
+}
+
+@media only screen and (max-width: 1100px) {
+  .movie-info-background {
+    top: 9vh;
+  }
+
+  .movie-info-block {
+    font-size: 13px;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .movie-info-background {
+    top: 8vh;
+  }
+
+  .movie-info-block {
+    font-size: 12px;
+  }
+}
+
+@media only screen and (max-width: 890px) {
+  .movie-info-background {
+    top: 8vh;
+  }
+
+  .movie-info-block {
+    font-size: 11px;
+  }
+
+  .text {
+    left: 35%;
+  }
+
+  .movie-poster-small {
+    width: 35%;
+    border: solid;
+  }
+
+  .youtube-div iframe {
+    width: 500px;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .movie-info-background {
+    top: 8vh;
+  }
+
+  .movie-info-block {
+    margin: 50px 0 0 0;
+    text-align: center;
+    width: 100%;
+    font-size: 18px;
+  }
+
+  .text {
+    margin-left: 0;
+    top: 112%;
+    left: 50%;
+    width: 90vw;
+    transform: translate(-50%, -50%);
+  }
+
+  .movie-poster-small {
+    width: 400px;
+  }
+
+  .similar-movies-h3 {
+    transition-duration: 0.5s;
+    margin-top: 550px;
+  }
+
+  .title-text {
+    backdrop-filter: none;
+  }
+
+  .main-text {
+    backdrop-filter: none;
+  }
+
+  .name-text {
+    font-size: 30px;
+  }
+
+  .youtube-div {
+    position: relative;
+    top: 92%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .youtube-div iframe {
+    width: 500px;
+  }
+}
+
+/*@media only screen and (max-width: 660px) {
+  .movie-info-background {
+    top: 8vh;
+  }
+
+  .movie-info-block {
+    width: 400px;
+    font-size: 18px;
+  }
+
+  .text {
+    margin-left: 0;
+    top: 115%;
+    left: 50%;
+    width: 90vw;
+    transform: translate(-50%, -50%);
+  }
+
+  .movie-poster-small {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    width: 60%;
+    border: solid;
+  }
+
+  .similar-movies-h3 {
+    transition-duration: 0.5s;
+    margin-top: 200%;
+  }
+
+  .title-text {
+    backdrop-filter: none;
+  }
+
+  .main-text {
+    backdrop-filter: none;
+  }
+
+  .youtube-div {
+    position: relative;
+    top: 180%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .youtube-div iframe {
+    width: 500px;
+  }
+}
+  */
+
+/*@media only screen and (max-width: 600px) {
+  .movie-info-background {
+    top: 8vh;
+  }
+
+  .movie-info-block {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  .text {
+    margin-left: 0;
+    top: 105%;
+    left: 50%;
+    width: 90vw;
+    transform: translate(-50%, -50%);
+  }
+
+  .movie-poster-small {
+    width: 60%;
+    border: solid;
+  }
+
+  .similar-movies-h3 {
+    transition-duration: 0.5s;
+    margin-top: 200%;
+  }
+
+  .title-text {
+    backdrop-filter: none;
+  }
+
+  .main-text {
+    backdrop-filter: none;
+  }
+
+  .youtube-div {
+    position: relative;
+    top: 180%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .youtube-div iframe {
+    width: 500px;
+  }
+}
+*/
+
+@media only screen and (max-width: 560px) {
+  .movie-info-block {
+    font-size: 16px;
+  }
+
+  .text {
+    top: 110%;
+  }
+
+  .movie-poster-small {
+    width: 400px;
+  }
+
+  .similar-movies-h3 {
+    transition-duration: 0.5s;
+    margin-top: 470px;
+  }
+
+  .title-text {
+    backdrop-filter: none;
+  }
+
+  .main-text {
+    backdrop-filter: none;
+  }
+
+  .name-text {
+    font-size: 25px;
+  }
+
+  .youtube-div {
+    top: 86%;
+  }
+
+  .youtube-div iframe {
+    width: 450px;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .movie-info-block {
+    font-size: 16px;
+  }
+
+  .text {
+    top: 110%;
+  }
+
+  .movie-poster-small {
+    width: 350px;
+  }
+
+  .similar-movies-h3 {
+    transition-duration: 0.5s;
+    margin-top: 550px;
+  }
+
+  .title-text {
+    backdrop-filter: none;
+  }
+
+  .main-text {
+    backdrop-filter: none;
+  }
+
+  .name-text {
+    font-size: 25px;
+  }
+
+  .youtube-div {
+    top: 100%;
+  }
+
+  .youtube-div iframe {
+    width: 350px;
+  }
+}

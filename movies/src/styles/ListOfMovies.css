@@ -1,0 +1,253 @@
+body {
+  transition-duration: 0.5s;
+}
+
+body.dark-theme {
+  background-color: rgb(36, 40, 59);
+}
+
+body.light-theme {
+  background-color: rgb(216, 228, 244);
+}
+
+.movie-list-div {
+  justify-content: center;
+  margin: 50vh 0 30px 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.movie-div {
+  transition-duration: 0.5s;
+  position: relative;
+  box-sizing: border-box;
+  width: 230px;
+  cursor: pointer;
+  transition: width 0.3s ease, transform 0.3s ease;
+  border-radius: 13px;
+}
+
+.movie-div.light-theme {
+  background-color: white;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.4);
+}
+
+.movie-div.dark-theme {
+  background-color: rgb(26, 27, 38);
+}
+
+.movie-div.hovered {
+  z-index: 10;
+  transform: scale(1.07);
+}
+
+.movie-poster {
+  border-radius: 12px 12px 0 0;
+  width: 100%;
+}
+
+.movie-title {
+  transition-duration: 0.5s;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.movie-title.light-theme {
+  color: black;
+}
+
+.movie-title.dark-theme {
+  color: rgb(169, 177, 214);
+}
+
+.movie-genre-year {
+  transition-duration: 0.5s;
+}
+
+.movie-genre-year.light-theme {
+  color: black;
+}
+
+.movie-genre-year.dark-theme {
+  color: rgb(169, 177, 214);
+}
+
+.info-btn {
+  transition-duration: 0.5s;
+  text-align: center;
+  font-style: italic;
+  font-weight: bold;
+  font-size: 13px;
+  z-index: 12;
+  position: absolute;
+  top: 2%;
+  left: 4%;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: none;
+  background-image: url("../pictures/Info.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: rgb(216, 228, 244);
+}
+
+.info-btn.light-theme {
+  color: black;
+}
+
+.info-btn.dark-theme {
+  color: rgb(169, 177, 214);
+}
+
+.info-btn:hover + .info-window {
+  opacity: 1;
+}
+
+.info-window {
+  transition-duration: 0.5s;
+  padding: 25px 10px 40px 10px;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+  position: absolute;
+  top: 1%;
+  left: 2%;
+  width: 150px;
+  height: 200px;
+  border-radius: 7px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.4);
+}
+
+.info-window.light-theme {
+  background-color: rgb(216, 228, 244);
+}
+
+.info-window.dark-theme {
+  background-color: rgb(26, 27, 38);
+}
+
+.info-window-p {
+  transition-duration: 0.5s;
+  font-size: 10px;
+  text-align: left;
+}
+
+.info-window-p.light-theme {
+  color: black;
+}
+
+.info-window-p.dark-theme {
+  color: rgb(169, 177, 214);
+}
+
+.add-to-favorites-btn {
+  position: absolute;
+  z-index: 12;
+  top: 2%;
+  right: 4%;
+  text-align: center;
+  font-style: italic;
+  font-weight: bold;
+  font-size: 13px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: none;
+  transition-duration: 0.5s;
+  background-color: rgb(216, 228, 244);
+  background-image: url("../pictures/Like.png");
+  background-size: 55%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.add-to-favorites-btn:hover {
+  scale: 1.2;
+}
+
+.del-from-favorites-btn {
+  position: absolute;
+  z-index: 12;
+  top: 2%;
+  right: 4%;
+  text-align: center;
+  font-style: italic;
+  font-weight: bold;
+  font-size: 13px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: none;
+  transition-duration: 0.5s;
+  background-color: rgb(216, 228, 244);
+  background-image: url("../pictures/Dislike.png");
+  background-size: 55%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.del-from-favorites-btn:hover {
+  scale: 1.2;
+}
+
+.add-to-favorites-btn.dark-theme {
+  color: rgb(169, 177, 214);
+}
+
+.add-to-favorites-btn.light-theme {
+  color: black;
+}
+
+.overview-div {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  line-clamp: 10;
+  -webkit-line-clamp: 10;
+  -webkit-box-orient: vertical;
+}
+
+#overview-h1 {
+  transition-duration: 0.5s;
+  font-size: 10px;
+}
+
+#overview-h1.light-theme {
+  color: black;
+}
+
+#overview-h1.dark-theme {
+  color: rgb(169, 177, 214);
+}
+
+#rate-h1 {
+  transition-duration: 0.5s;
+  font-size: 12px;
+  position: absolute;
+  right: 7%;
+  top: 0%;
+}
+
+#rate-h1.light-theme {
+  color: black;
+}
+
+#rate-h1.dark-theme {
+  color: rgb(169, 177, 214);
+}
+
+.title-h1 {
+  position: absolute;
+  top: 25%;
+  left: 3.5%;
+}
+
+.title-h1.light-theme {
+  color: black;
+}
+
+.title-h1.dark-theme {
+  color: white;
+}

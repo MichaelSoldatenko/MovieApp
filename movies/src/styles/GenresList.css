@@ -1,0 +1,37 @@
+.genres-list {
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin: 50vh 0 30px 0;
+  justify-content: center;
+}
+
+.genre-div {
+  cursor: pointer;
+  box-sizing: border-box;
+  position: relative;
+  width: 200px;
+  height: 200px;
+  border-radius: 15px;
+  background-size: 100%;
+  background-position: center;
+  overflow: hidden;
+  transition: background-size 0.3s ease-in-out;
+}
+
+.genre-div:hover {
+  background-size: 110%;
+}
+
+.genre-h3 {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  padding: 7px;
+  border-radius: 10px;
+  color: white;
+}

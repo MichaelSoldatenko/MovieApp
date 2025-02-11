@@ -1,0 +1,7 @@
+@media only screen and (max-width: 420px) {
+  .background-div {
+    border-radius: 10px;
+    width: 350px;
+    height: 590px;
+  }
+}
