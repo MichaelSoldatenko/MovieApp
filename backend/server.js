@@ -8,7 +8,7 @@ const app = express();
 
 app.use(express.json());
 
-app.use(cors({ origin: `${process.env.FRONTEND_URL}` }));
+app.use(cors({ origin: "https://movie-app-xi-sage.vercel.app" }));
 
 mongoose.connect("mongodb://localhost:27017/movieApp", {
   useNewUrlParser: true,
