@@ -71,3 +71,7 @@
   width: 25%;
   border: solid;
 }
+
+.name-text.dark-theme {
+  color: white;
+}

@@ -10,6 +10,7 @@ import { useUser } from "./UserContext";
 import { useTheme } from "./SwitchTheme";
 
 const MOVIE_API_KEY = process.env.REACT_APP_MOVIE_API_KEY;
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
 const options = {
   method: "GET",
@@ -120,7 +121,7 @@ export default function FoundMovies() {
     if (k) return;
 
     try {
-      const response = await fetch("http://localhost:5000/api/movies", {
+      const response = await fetch(`${BACKEND_URL}/api/movies`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -159,7 +160,7 @@ export default function FoundMovies() {
       const token = localStorage.getItem("token");
 
       try {
-        const response = await fetch("http://localhost:5000/api/movies", {
+        const response = await fetch(`${BACKEND_URL}/api/movies`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -181,7 +182,7 @@ export default function FoundMovies() {
     const token = localStorage.getItem("token");
 
     try {
-      const response = await fetch(`http://localhost:5000/api/movies/${id}`, {
+      const response = await fetch(`${BACKEND_URL}/api/movies/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",

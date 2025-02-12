@@ -2,6 +2,8 @@ import { useParams } from "react-router";
 import { useTheme } from "./SwitchTheme";
 import { useState } from "react";
 
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+
 export default function ResetPassword() {
   let { token } = useParams();
 
@@ -16,7 +18,7 @@ export default function ResetPassword() {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/auth/reset-password/${token}`,
+        `${BACKEND_URL}/api/auth/reset-password/${token}`,
         {
           method: "POST",
           headers: {

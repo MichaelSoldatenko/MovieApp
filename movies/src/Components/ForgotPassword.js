@@ -3,6 +3,8 @@ import "../styles/ForgotPassword.css";
 import "../responsive/ForgotPassword.css";
 import { useState } from "react";
 
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+
 export default function ForgotPassword() {
   const { theme, toggleTheme } = useTheme();
 
@@ -13,16 +15,13 @@ export default function ForgotPassword() {
     const email = e.target[0].value;
 
     try {
-      const response = await fetch(
-        "http://localhost:5000/api/auth/forgot-password",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ email }),
-        }
-      );
+      const response = await fetch(`${BACKEND_URL}/api/auth/forgot-password`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
 
       if (response.status >= 400 && response.status < 500) {
         setMessage("Invalid email");

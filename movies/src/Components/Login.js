@@ -4,6 +4,8 @@ import "../responsive/Login.css";
 import "../styles/TopBar.css";
 import { useRef, useState } from "react";
 
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+
 export default function Login() {
   const { theme, toggleTheme } = useTheme();
 
@@ -21,7 +23,7 @@ export default function Login() {
     const password = passwordRef.current.value;
 
     try {
-      const response = await fetch("http://localhost:5000/api/auth/login", {
+      const response = await fetch(`${BACKEND_URL}/api/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

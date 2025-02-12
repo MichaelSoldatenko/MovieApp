@@ -4,6 +4,8 @@ import "../styles/ListOfMovies.css";
 import { useTheme } from "./SwitchTheme";
 import genresArr from "../data/genres";
 
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+
 export default function Favorites() {
   const [movieData, setMovieData] = useState([]);
   const [hoveredIndex, setHoveredIndex] = useState(null);
@@ -17,7 +19,7 @@ export default function Favorites() {
     const token = localStorage.getItem("token");
 
     try {
-      const response = await fetch("http://localhost:5000/api/movies", {
+      const response = await fetch(`${BACKEND_URL}/api/movies`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -78,7 +80,7 @@ export default function Favorites() {
     const token = localStorage.getItem("token");
 
     try {
-      const response = await fetch(`http://localhost:5000/api/movies/${id}`, {
+      const response = await fetch(`${BACKEND_URL}/api/movies/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",

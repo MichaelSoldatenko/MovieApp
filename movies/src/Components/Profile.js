@@ -5,6 +5,8 @@ import { useTheme } from "./SwitchTheme";
 import { useUser } from "./UserContext";
 import { useEffect, useState, useRef } from "react";
 
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+
 export default function Profile() {
   const { theme } = useTheme();
 
@@ -25,15 +27,12 @@ export default function Profile() {
     const token = localStorage.getItem("token");
 
     try {
-      const response = await fetch(
-        "http://localhost:5000/api/auth/user/avatar",
-        {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await fetch(`${BACKEND_URL}/api/auth/user/avatar`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
       if (response.ok) {
         const data = await response.blob();
@@ -64,16 +63,13 @@ export default function Profile() {
     formData.append("avatar", avatar);
 
     try {
-      const response = await fetch(
-        "http://localhost:5000/api/auth/user/avatar",
-        {
-          method: "POST",
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-          body: formData,
-        }
-      );
+      const response = await fetch(`${BACKEND_URL}/api/auth/user/avatar`, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        body: formData,
+      });
 
       if (response.ok) {
         setAvatar(null);
@@ -94,15 +90,12 @@ export default function Profile() {
     const token = localStorage.getItem("token");
 
     try {
-      const response = await fetch(
-        "http://localhost:5000/api/auth/user/delete",
-        {
-          method: "DELETE",
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await fetch(`${BACKEND_URL}/api/auth/user/delete`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
       if (response.ok) {
         localStorage.setItem("token", null);
@@ -119,7 +112,7 @@ export default function Profile() {
     const token = localStorage.getItem("token");
 
     try {
-      const response = await fetch("http://localhost:5000/api/auth/user/info", {
+      const response = await fetch(`${BACKEND_URL}/api/auth/user/info`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -144,7 +137,7 @@ export default function Profile() {
     const token = localStorage.getItem("token");
 
     try {
-      const response = await fetch("http://localhost:5000/api/auth/user/info", {
+      const response = await fetch(`${BACKEND_URL}/api/auth/user/info`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -168,7 +161,7 @@ export default function Profile() {
     const token = localStorage.getItem("token");
 
     try {
-      const response = await fetch("http://localhost:5000/api/auth/user/info", {
+      const response = await fetch(`${BACKEND_URL}/api/auth/user/info`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -193,17 +186,14 @@ export default function Profile() {
     const token = localStorage.getItem("token");
 
     try {
-      const response = await fetch(
-        "http://localhost:5000/api/auth/user/about",
-        {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify({ about }),
-        }
-      );
+      const response = await fetch(`${BACKEND_URL}/api/auth/user/about`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ about }),
+      });
 
       if (response.ok) {
         window.location.reload();

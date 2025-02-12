@@ -4,6 +4,8 @@ import { useTheme } from "./SwitchTheme";
 import { useState, useEffect } from "react";
 import { useUser } from "./UserContext";
 
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+
 export default function ProfileWindow(props) {
   const { theme } = useTheme();
 
@@ -29,15 +31,12 @@ export default function ProfileWindow(props) {
     const token = localStorage.getItem("token");
 
     try {
-      const response = await fetch(
-        "http://localhost:5000/api/auth/user/avatar",
-        {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await fetch(`${BACKEND_URL}/api/auth/user/avatar`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
       if (response.ok) {
         const data = await response.blob();

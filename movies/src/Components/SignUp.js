@@ -2,6 +2,8 @@ import "../styles/Login.css";
 import { useTheme } from "./SwitchTheme";
 import { useRef, useState } from "react";
 
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+
 export default function SignUp() {
   const { theme, toggleTheme } = useTheme();
 
@@ -30,7 +32,7 @@ export default function SignUp() {
     }
 
     try {
-      const response = await fetch("http://localhost:5000/api/auth/register", {
+      const response = await fetch(`${BACKEND_URL}/api/auth/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

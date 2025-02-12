@@ -2,6 +2,8 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 
 const UserContext = createContext();
 
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+
 export function UserProvider({ children }) {
   const [userData, setUserData] = useState({});
 
@@ -10,7 +12,7 @@ export function UserProvider({ children }) {
       const token = localStorage.getItem("token");
 
       try {
-        const response = await fetch("http://localhost:5000/api/auth/user", {
+        const response = await fetch(`${BACKEND_URL}/api/auth/user`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
