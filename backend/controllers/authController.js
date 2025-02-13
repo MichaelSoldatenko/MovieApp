@@ -220,7 +220,7 @@ const forgotPassword = async (req, res) => {
     }
 
     const resetToken = crypto.randomBytes(32).toString("hex");
-    const resetLink = `http://localhost:3000/resetPassword/${resetToken}`;
+    const resetLink = `https://movie-app-psi-inky.vercel.app/resetPassword/${resetToken}`;
 
     user.resetToken = resetToken;
     user.resetTokenExpiry = Date.now() + 600000;
