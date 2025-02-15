@@ -181,7 +181,7 @@ body.light-theme {
   border-radius: 50%;
   border: none;
   transition-duration: 0.5s;
-  background-color: rgb(216, 228, 244);
+  background-color: rgb(255, 133, 133);
   background-image: url("../pictures/Dislike.png");
   background-size: 55%;
   background-repeat: no-repeat;

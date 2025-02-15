@@ -128,15 +128,23 @@ input[type="file"] {
   background-position-x: 90%;
   background-position-y: center;
   background-repeat: no-repeat;
-  background-size: 12%;
+  background-size: 5%;
 }
 
-#delete-btn {
-  background-image: url("../pictures/Deleted.png");
+#delete-btn.light-theme {
+  background-image: url("../pictures/DeletedWhite.png");
 }
 
-#leave-btn {
-  background-image: url("../pictures/Signout.png");
+#delete-btn.dark-theme {
+  background-image: url("../pictures/DeletedDark.png");
+}
+
+#leave-btn.light-theme {
+  background-image: url("../pictures/LogOutWhite.png");
+}
+
+#leave-btn.dark-theme {
+  background-image: url("../pictures/LogOutDark.png");
 }
 
 .edit {

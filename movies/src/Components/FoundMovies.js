@@ -216,6 +216,17 @@ export default function FoundMovies() {
         <div>
           <TopBar />
 
+          <h2
+            style={{
+              position: "absolute",
+              top: "35%",
+              left: "3.5%",
+              color: `${theme === "dark-theme" ? "white" : "black"}`,
+            }}
+          >
+            Results that contain "{foundMovies}":
+          </h2>
+
           <div className="movie-list-div">
             {movies.map((movie, index) => (
               <div

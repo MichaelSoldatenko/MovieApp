@@ -15,12 +15,14 @@ export default function Login() {
 
   const userNameRef = useRef();
   const passwordRef = useRef();
+  const rememberRef = useRef();
 
   async function loignHandler(e) {
     e.preventDefault();
 
     const userName = userNameRef.current.value;
     const password = passwordRef.current.value;
+    const remember = rememberRef.current.checked;
 
     try {
       const response = await fetch(`${BACKEND_URL}/api/auth/login`, {
@@ -31,6 +33,7 @@ export default function Login() {
         body: JSON.stringify({
           userName,
           password,
+          remember,
         }),
       });
 
@@ -100,14 +103,19 @@ export default function Login() {
           <button
             className="eye-btn"
             style={{
-              top: "46.5%",
+              top: "41%",
               right: "5%",
             }}
             onClick={() => {
               show === "password" ? setShow("text") : setShow("password");
             }}
           ></button>
-          <br />
+
+          <p className={`remember-checkbox ${theme}`}>
+            <input type="checkbox" ref={rememberRef} />
+            Remember me
+          </p>
+
           <button
             className={`login-signup-btn ${theme}`}
             onClick={loignHandler}
@@ -126,8 +134,9 @@ export default function Login() {
               color: "rgb(169, 177, 250)",
               position: "absolute",
               left: "50%",
-              bottom: "-25%",
+              bottom: "-10%",
               transform: "translate(-50%)",
+              width: "150px",
             }}
             href="/forgotPassword"
           >

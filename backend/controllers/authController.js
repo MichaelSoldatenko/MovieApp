@@ -23,7 +23,7 @@ const register = async (req, res) => {
 };
 
 const login = async (req, res) => {
-  const { userName, password } = req.body;
+  const { userName, password, remember } = req.body;
 
   try {
     const user = await User.findOne({ userName });
@@ -38,7 +38,7 @@ const login = async (req, res) => {
     }
 
     const token = jwt.sign({ userId: user._id }, "your_jwt_secret", {
-      expiresIn: "1h",
+      expiresIn: `${remember ? "7d" : "1h"}`,
     });
 
     res.json({ token });
@@ -74,7 +74,8 @@ const getAvatar = async (req, res) => {
     }
 
     const avatarFile =
-      user.avatar || "default-avatar-icon-of-social-media-user-vector.jpg";
+      user.avatar ||
+      "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png";
 
     const avatarPath = path.resolve(
       __dirname,
@@ -103,7 +104,8 @@ const uploadAvatar = async (req, res) => {
 
     if (
       user.avatar &&
-      user.avatar !== "default-avatar-icon-of-social-media-user-vector.jpg"
+      user.avatar !==
+        "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
     ) {
       const oldAvatarPath = path.resolve(
         __dirname,
@@ -134,7 +136,8 @@ const deleteUser = async (req, res) => {
 
     if (
       user.avatar &&
-      user.avatar !== "default-avatar-icon-of-social-media-user-vector.jpg"
+      user.avatar !==
+        "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
     ) {
       const avatarPath = path.resolve(
         __dirname,

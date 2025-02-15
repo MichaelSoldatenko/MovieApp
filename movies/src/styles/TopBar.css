@@ -126,7 +126,8 @@
   background-image: url("../../public/movie-app-icon.png");
   background-size: 27%;
   background-repeat: no-repeat;
-  background-position-y: center;
+  background-position-y: 40%;
+  background-position-x: 10%;
 }
 
 .navigation-div.dark-theme:hover {
@@ -211,7 +212,7 @@
 }
 
 .home-a {
-  padding: 13px 50px 13px 50px;
+  padding: 13px 20px 13px 80px;
   text-decoration: none;
 }
 

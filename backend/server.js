@@ -9,7 +9,11 @@ const app = express();
 
 app.use(express.json());
 
-app.use(cors({ origin: "https://movie-app-psi-inky.vercel.app" }));
+app.use(
+  cors({
+    origin: "https://movie-app-psi-inky.vercel.app" /*"http://localhost:3000"*/,
+  })
+);
 
 const mongoURI = process.env.MONGO_URI || "mongodb://localhost:27017/movieApp";
 

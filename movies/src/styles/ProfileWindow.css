@@ -79,6 +79,8 @@
   margin: 0;
   border: none;
   height: 1px;
+  width: 80%;
+  margin-left: 10%;
 }
 
 .profile-hr.dark-theme {
