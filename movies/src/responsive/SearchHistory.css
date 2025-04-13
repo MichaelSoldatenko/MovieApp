@@ -1,0 +1,17 @@
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+  .search-list-div {
+    width: 150px;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+  .search-list-div {
+    width: 130px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .search-list-div {
+    width: 120px;
+  }
+}

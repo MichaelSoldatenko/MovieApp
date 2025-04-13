@@ -18,6 +18,7 @@ export default function Profile() {
   const [hiddenPasOld, setHiddenPasOld] = useState("hidden");
   const [hiddenPasNew, setHiddenPasNew] = useState("hidden");
   const [hiddenBio, setHiddenBio] = useState("hidden");
+  const [deleteWindow, setDeleteWindow] = useState("hidden");
   const [show, setShow] = useState("password");
 
   const userNameRef = useRef();
@@ -86,7 +87,8 @@ export default function Profile() {
     window.location.href = "/";
   }
 
-  async function deleteAccount() {
+  async function deleteAccount(e) {
+    e.preventDefault();
     const token = localStorage.getItem("token");
 
     try {
@@ -99,6 +101,7 @@ export default function Profile() {
 
       if (response.ok) {
         localStorage.setItem("token", null);
+        localStorage.setItem("preferences", null);
         window.location.href = "/";
       }
     } catch (err) {}
@@ -207,6 +210,27 @@ export default function Profile() {
 
       {localStorage.getItem("token") !== "null" ? (
         <div>
+          <div className={`modal-background ${deleteWindow}`}>
+            <div className={`modal-div ${theme}`}>
+              <form onSubmit={deleteAccount} className="modal-form">
+                <h2 className={`modal-h2 ${theme}`}>
+                  Are you sure you want to delete the account?
+                </h2>
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setDeleteWindow("hidden");
+                  }}
+                  className={`modal-btns ${theme}`}
+                >
+                  Cancel
+                </button>
+                <button type="submit" className={`modal-btns ${theme}`}>
+                  Delete
+                </button>
+              </form>
+            </div>
+          </div>
           <div className={`modal-background ${hiddenName}`}>
             <div className={`modal-div ${theme}`}>
               <form onSubmit={changeName} className="modal-form">
@@ -224,7 +248,10 @@ export default function Profile() {
                 </button>
                 <button
                   className={`modal-btns ${theme}`}
-                  onClick={() => setHiddenName("hidden")}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setHiddenName("hidden");
+                  }}
                 >
                   Cancel
                 </button>
@@ -260,7 +287,10 @@ export default function Profile() {
                 </button>
                 <button
                   className={`modal-btns ${theme}`}
-                  onClick={() => setHiddenPasOld("hidden")}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setHiddenPasOld("hidden");
+                  }}
                 >
                   Cancel
                 </button>
@@ -296,7 +326,10 @@ export default function Profile() {
                 </button>
                 <button
                   className={`modal-btns ${theme}`}
-                  onClick={() => setHiddenPasNew("hidden")}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setHiddenPasNew("hidden");
+                  }}
                 >
                   Cancel
                 </button>
@@ -430,7 +463,7 @@ export default function Profile() {
               <br />
               <button
                 className={`control-btns ${theme}`}
-                onClick={deleteAccount}
+                onClick={() => setDeleteWindow("")}
                 id="delete-btn"
               >
                 Delete Account

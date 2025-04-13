@@ -6,6 +6,7 @@ const bcrypt = require("bcryptjs");
 const crypto = require("crypto");
 const nodemailer = require("nodemailer");
 const { default: mongoose } = require("mongoose");
+const Comment = require("../models/Comment");
 
 const register = async (req, res) => {
   const { userName, email, password, gender } = req.body;
@@ -55,6 +56,7 @@ const getUser = async (req, res) => {
     }
 
     res.json({
+      id: user._id,
       userName: user.userName,
       email: user.email,
       gender: user.gender,
@@ -73,9 +75,7 @@ const getAvatar = async (req, res) => {
       return res.status(404).json({ message: "User not found" });
     }
 
-    const avatarFile =
-      user.avatar ||
-      "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png";
+    const avatarFile = user.avatar || "avatar-placeholder.png";
 
     const avatarPath = path.resolve(
       __dirname,
@@ -102,11 +102,7 @@ const uploadAvatar = async (req, res) => {
       return res.status(404).json({ message: "User not found" });
     }
 
-    if (
-      user.avatar &&
-      user.avatar !==
-        "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
-    ) {
+    if (user.avatar && user.avatar !== "avatar-placeholder.png") {
       const oldAvatarPath = path.resolve(
         __dirname,
         "../uploads/avatars",
@@ -134,11 +130,9 @@ const deleteUser = async (req, res) => {
       return res.status(404).json({ message: "User not found" });
     }
 
-    if (
-      user.avatar &&
-      user.avatar !==
-        "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
-    ) {
+    await Comment.deleteMany({ userId: user._id });
+
+    if (user.avatar && user.avatar !== "avatar-placeholder.png") {
       const avatarPath = path.resolve(
         __dirname,
         "../uploads/avatars",

@@ -1,10 +1,12 @@
 import genresArr from "../data/genres";
+import countries from "../data/countries";
 import { useEffect, useState } from "react";
 import TopBar from "./TopBar";
 import "../styles/ListOfMovies.css";
 import "../responsive/ListOfMovies.css";
 import "../styles/TopBar.css";
 import "../styles/SortBy.css";
+import "../responsive/SortBy.css";
 import "../styles/Pagination.css";
 import { useUser } from "./UserContext";
 
@@ -33,13 +35,29 @@ export default function Home() {
   const [totalPages, setTotalPages] = useState(0);
   const [sortBy, setSortBy] = useState("popularity.desc");
   const [isLoading, setIsLoading] = useState(false);
+  const [country, setCountry] = useState("");
+  const [yearBegin, setYearBegin] = useState("1920");
+  const [yearEnd, setYearEnd] = useState("2025");
 
   const { theme } = useTheme();
+
+  const years = [];
+
+  function calcYear() {
+    let k = 1920;
+
+    while (k <= 2025) {
+      years.push(String(k));
+      k++;
+    }
+  }
+
+  calcYear();
 
   useEffect(() => {
     setIsLoading(true);
     fetch(
-      `https://api.themoviedb.org/3/discover/movie?language=en-US&page=${currentPage}&sort_by=${sortBy}`,
+      `https://api.themoviedb.org/3/discover/movie?language=en-US&page=${currentPage}&sort_by=${sortBy}&primary_release_date.gte=${yearBegin}-01-01&primary_release_date.lte=${yearEnd}-12-31&with_origin_country=${country}`,
       options
     )
       .then((response) => response.json())
@@ -52,7 +70,7 @@ export default function Home() {
         setMovieList(data.results);
         setTotalPages(data.total_pages);
       });
-  }, [currentPage, sortBy]);
+  }, [currentPage, sortBy, yearBegin, yearEnd, country]);
 
   useEffect(() => {
     async function getFavorites() {
@@ -197,27 +215,80 @@ export default function Home() {
       <TopBar />
 
       <h1 className={`title-h1 ${theme}`}>Popular Movies & TV Shows</h1>
-
-      <select
-        name="sorting"
-        id="sorting-select"
-        className={theme}
-        onChange={(e) => setSortBy(e.target.value)}
-      >
-        <option
-          value="popularity.desc"
-          className={`sorting-option ${theme}`}
-          defaultValue
+      <div className="sorting-div">
+        <select
+          name="sorting"
+          id="sorting-select"
+          className={`${theme} sorting-select`}
+          onChange={(e) => setSortBy(e.target.value)}
         >
-          Popular
-        </option>
-        <option value="release_date.desc" className={`sorting-option ${theme}`}>
-          Release Date
-        </option>
-        <option value="vote_average.desc" className={`sorting-option ${theme}`}>
-          Rating
-        </option>
-      </select>
+          <option
+            value="popularity.desc"
+            className={`sorting-option ${theme}`}
+            defaultValue
+          >
+            Popular
+          </option>
+          <option
+            value="release_date.desc"
+            className={`sorting-option ${theme}`}
+          >
+            Release Date
+          </option>
+          <option
+            value="vote_average.desc"
+            className={`sorting-option ${theme}`}
+          >
+            Rating
+          </option>
+        </select>
+
+        <div className="double">
+          <select
+            name="year"
+            id="year-select"
+            className={`${theme} sorting-select`}
+            style={{
+              position: "static",
+            }}
+            onChange={(e) => {
+              setYearBegin(e.target.value);
+              setYearEnd(e.target.value);
+            }}
+          >
+            <option value="">Year</option>
+            {years.map((year) => {
+              return (
+                <option value={year} key={year}>
+                  {year}
+                </option>
+              );
+            })}
+          </select>
+
+          <select
+            name="country"
+            id="country-select"
+            className={`${theme} sorting-select`}
+            style={{
+              position: "static",
+            }}
+            onChange={(e) => {
+              console.log(e.target.value);
+              setCountry(e.target.value);
+            }}
+          >
+            <option value="">All</option>
+            {countries.countries_list.map((country) => {
+              return (
+                <option value={country.iso_3166_1} key={country.iso_3166_1}>
+                  {country.english_name}
+                </option>
+              );
+            })}
+          </select>
+        </div>
+      </div>
 
       <div className="movie-list-div">
         {movieList.map((movie, index) => (

@@ -1,8 +1,15 @@
-#sorting-select {
-  transition-duration: 0.5s;
+.sorting-div {
   position: absolute;
   top: 40%;
   left: 3.5%;
+  width: 92vw;
+  height: 30px;
+  text-align: right;
+}
+
+.sorting-select {
+  transition-duration: 0.5s;
+  position: absolute;
   border: none;
   width: 150px;
   height: 30px;
@@ -12,16 +19,24 @@
   transition: width 0.3s ease, transform 0.3s ease;
 }
 
-#sorting-select:hover {
+#sorting-select {
+  transform: translate(-100%);
+}
+
+.double {
+  position: absolute;
+}
+
+.sorting-select:hover {
   transform: scale(1.05);
 }
 
-#sorting-select.light-theme {
+.sorting-select.light-theme {
   background-color: white;
   color: black;
 }
 
-#sorting-select.dark-theme {
+.sorting-select.dark-theme {
   background-color: rgb(26, 27, 38);
   color: rgb(169, 177, 214);
 }
@@ -36,4 +51,12 @@
 
 .sorting-option.dark-theme {
   background-color: rgb(26, 27, 38);
+}
+
+#country-select {
+  margin-left: 5px;
+}
+
+#year-select {
+  margin-right: 5px;
 }

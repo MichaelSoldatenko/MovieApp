@@ -57,7 +57,8 @@
 }
 
 .profile-text.dark-theme {
-  color: rgb(169, 177, 214);
+  /*color: rgb(169, 177, 214);*/
+  color: white;
 }
 
 .profile-text.light-theme {

@@ -1,0 +1,48 @@
+.search-list-div {
+  box-sizing: border-box;
+  padding: 0;
+  width: 180px;
+  border-radius: 5px;
+  margin-top: -15px;
+}
+
+.search-list-div.light-theme {
+  background-color: rgb(225, 225, 225);
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.4);
+}
+
+.search-list-div.dark-theme {
+  background-color: rgb(26, 27, 38);
+  border: solid 1px rgb(36, 40, 59);
+}
+
+.search-list-ul {
+  text-align: left;
+  padding: 0;
+}
+
+.search-list-li {
+  transition-duration: 0.3s;
+  list-style: none;
+  padding: 10px;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-position-x: 95%;
+  background-position-y: center;
+  background-size: 10%;
+}
+
+.search-list-li:hover {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.search-list-li.light-theme {
+  border-bottom: solid 1px gray;
+  background-image: url("../pictures/ClockWhite.png");
+}
+
+.search-list-li.dark-theme {
+  color: white;
+  border-bottom: solid 1px rgb(169, 177, 214);
+  background-image: url("../pictures/ClockBlack.png");
+}

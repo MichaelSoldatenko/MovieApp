@@ -41,6 +41,11 @@ export default function TopBar(props) {
                 Profile
               </a>
             </p>
+            <p className={`navigation-li ${theme}`}>
+              <a className={`navigation-a ${theme}`} href="/recs">
+                Recs
+              </a>
+            </p>
           </div>
         </div>
       </div>

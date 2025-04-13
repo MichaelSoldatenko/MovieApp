@@ -75,3 +75,34 @@
 .name-text.dark-theme {
   color: white;
 }
+
+.movie-info-btn {
+  position: absolute;
+  top: 7%;
+  right: 5%;
+  width: 100px;
+  height: 30px;
+  background-color: transparent;
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  border-radius: 20px;
+  font-weight: bold;
+  transition-duration: 0.5s;
+}
+
+.movie-info-btn.light-theme {
+  border: solid 2px black;
+}
+
+.movie-info-btn.dark-theme {
+  border: solid 2px white;
+  color: white;
+}
+
+.movie-info-btn:hover {
+  scale: 1.1;
+}
+
+.dislike {
+  background-color: rgba(252, 0, 0, 0.15);
+}

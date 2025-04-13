@@ -8,7 +8,7 @@ const UserSchema = new mongoose.Schema({
   gender: { type: String, required: true },
   avatar: {
     type: String,
-    default: "default-avatar-icon-of-social-media-user-vector.jpg",
+    default: "avatar-placeholder.png",
   },
   movies: [{ type: mongoose.Schema.Types.ObjectId, ref: "Movie" }],
   about: { type: String, default: "" },

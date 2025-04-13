@@ -45,7 +45,9 @@ export default function Login() {
       if (response.ok) {
         const data = await response.json();
         localStorage.setItem("token", data.token);
-        window.location.href = "/home";
+        if (localStorage.getItem("preferences") !== "null")
+          window.location.href = "/home";
+        else window.location.href = "/preferences";
       }
     } catch (err) {
       setMessage("An error was happend. Try later");
@@ -55,7 +57,14 @@ export default function Login() {
   return (
     <div>
       <div className={`background-div ${theme}`}>
-        <label className="checkbox-label" htmlFor="checkbox">
+        <label
+          style={{
+            top: "1%",
+            left: "3%",
+          }}
+          className="checkbox-label"
+          htmlFor="checkbox"
+        >
           <input
             type="checkbox"
             onChange={toggleTheme}

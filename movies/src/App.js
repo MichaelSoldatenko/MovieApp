@@ -10,6 +10,8 @@ import Favorites from "./Components/Favorites";
 import Error from "./Components/Error";
 import ForgotPassword from "./Components/ForgotPassword";
 import ResetPassword from "./Components/ResetPassword";
+import Preferences from "./Components/Preferences";
+import Recs from "./Components/Recs";
 import "./App.css";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -30,6 +32,8 @@ function App() {
           <Route path="/favorites" element={<Favorites />} />
           <Route path="/forgotPassword" element={<ForgotPassword />} />
           <Route path="/resetPassword/:token" element={<ResetPassword />} />
+          <Route path="/preferences" element={<Preferences />} />
+          <Route path="/recs" element={<Recs />} />
           <Route path="*" element={<Error />} />
         </Routes>
       </Router>

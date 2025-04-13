@@ -3,6 +3,8 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const authRoutes = require("./routes/authRoutes");
 const movieRoutes = require("./routes/movieRoutes");
+const commentRoutes = require("./routes/commentRoutes");
+const searchRoutes = require("./routes/searchRoutes");
 require("dotenv").config();
 
 const app = express();
@@ -11,7 +13,8 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: "https://movie-app-psi-inky.vercel.app" /*"http://localhost:3000"*/,
+    origin:
+      "http://localhost:3000" /*"http://localhost:3000"  "https://movie-app-psi-inky.vercel.app"*/,
   })
 );
 
@@ -28,6 +31,8 @@ mongoose
 app.use("/api/auth", authRoutes);
 app.use("/api", movieRoutes);
 app.use("/uploads", express.static("uploads"));
+app.use("/api/comments", commentRoutes);
+app.use("/api/search", searchRoutes);
 
 const PORT = 5000;
 app.listen(PORT, () => {

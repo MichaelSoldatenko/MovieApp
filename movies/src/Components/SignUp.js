@@ -4,6 +4,12 @@ import { useRef, useState } from "react";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
+const symbols = "_-():";
+const nums = "1234567890";
+const letters = "abcdefghijklmnopqrstuvwxyz";
+
+let k1, k2, k3;
+
 export default function SignUp() {
   const { theme, toggleTheme } = useTheme();
 
@@ -31,6 +37,39 @@ export default function SignUp() {
       return;
     }
 
+    if (password.length < 8) {
+      setMessage("Password length must have no less than 8 characters!");
+      return;
+    }
+
+    for (let i = 0; i < symbols.length; i++) {
+      if (password.includes(symbols[i])) {
+        k1 = true;
+        break;
+      }
+    }
+
+    for (let i = 0; i < nums.length; i++) {
+      if (password.includes(nums[i])) {
+        k2 = true;
+        break;
+      }
+    }
+
+    for (let i = 0; i < letters.length; i++) {
+      if (password.includes(letters[i])) {
+        k3 = true;
+        break;
+      }
+    }
+
+    if (!k1 || !k2 || !k3) {
+      setMessage(
+        "Password must have at least one letter, one number and one special character"
+      );
+      return;
+    }
+
     try {
       const response = await fetch(`${BACKEND_URL}/api/auth/register`, {
         method: "POST",
@@ -50,7 +89,6 @@ export default function SignUp() {
       }
 
       if (response.ok) {
-        const data = await response.json();
         window.location.href = "/";
         setColor("");
       }
@@ -61,17 +99,25 @@ export default function SignUp() {
 
   return (
     <div>
-      <label className="checkbox-label" htmlFor="checkbox">
-        <input
-          type="checkbox"
-          onChange={toggleTheme}
-          checked={theme === "dark-theme"}
-          className="checkbox-input"
-          id="checkbox"
-        />
-        <span className="checkbox-text"></span>
-      </label>
       <div className={`background-div ${theme}`}>
+        <label
+          style={{
+            top: "1%",
+            left: "3%",
+          }}
+          className="checkbox-label"
+          htmlFor="checkbox"
+        >
+          <input
+            type="checkbox"
+            onChange={toggleTheme}
+            checked={theme === "dark-theme"}
+            className="checkbox-input"
+            id="checkbox"
+          />
+          <span className="checkbox-text"></span>
+        </label>
+
         <div className={`login-signup-div ${theme}`}>
           <p
             className={`message-p`}

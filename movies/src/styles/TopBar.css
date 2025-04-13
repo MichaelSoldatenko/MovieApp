@@ -17,6 +17,8 @@
 }
 
 .search-form {
+  width: 180px;
+  height: 30px;
   position: absolute;
   top: 50%;
   right: 20%;
@@ -24,6 +26,7 @@
 }
 
 .search-input {
+  width: 180px;
   transition-duration: 0.5s;
   box-sizing: border-box;
   padding: 7px 0 7px 10px;

@@ -1,0 +1,25 @@
+@media only screen and (max-width: 510px) {
+  .sorting-div {
+    display: grid;
+    text-align: left;
+    position: absolute;
+    height: 100px;
+    top: 33.5%;
+  }
+
+  .double {
+    position: static;
+    display: grid;
+    margin-top: 5px;
+  }
+
+  #sorting-select {
+    transform: translate(0%);
+    position: static;
+    display: inline-block;
+  }
+
+  #country-select {
+    margin: 5px 0 0 0;
+  }
+}

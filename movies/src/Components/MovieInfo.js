@@ -2,6 +2,7 @@ import { useParams } from "react-router";
 import { useEffect, useState } from "react";
 import YouTube from "react-youtube";
 import TopBar from "./TopBar";
+import Comments from "./Comments";
 import months from "../data/months";
 import genresArr from "../data/genres";
 import "../styles/TopBar.css";
@@ -11,8 +12,10 @@ import "../responsive/MovieInfo.css";
 import Error from "./Error";
 
 import { useTheme } from "./SwitchTheme";
+import { useUser } from "./UserContext";
 
 const MOVIE_API_KEY = process.env.REACT_APP_MOVIE_API_KEY;
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
 const options = {
   method: "GET",
@@ -25,18 +28,45 @@ const options = {
 export default function MovieInfo() {
   let { movieID } = useParams();
 
+  let indexOfFavorites = false;
+
   const [movieInfo, setMovieInfo] = useState([]);
   const [movieVideo, setMovieVideo] = useState([]);
   const [similarMovies, setSimilarMovies] = useState([]);
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [message, setMessage] = useState("");
+  const [favoriteMovies, setFavoriteMovies] = useState([]);
 
   const { theme } = useTheme();
+  const userData = useUser();
 
   useEffect(() => {
     fetchMovieInfo();
     fetchMovieVideo();
     fetchSimilarMovies();
+  }, []);
+
+  useEffect(() => {
+    async function getFavorites() {
+      const token = localStorage.getItem("token");
+
+      try {
+        const response = await fetch(`${BACKEND_URL}/api/movies`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          setFavoriteMovies(data);
+        }
+      } catch (err) {}
+    }
+
+    getFavorites();
   }, []);
 
   async function fetchMovieInfo() {
@@ -48,6 +78,7 @@ export default function MovieInfo() {
 
       if (response.ok) {
         const data = await response.json();
+        console.log(data);
         setMovieInfo(data);
       }
 
@@ -57,6 +88,90 @@ export default function MovieInfo() {
     } catch (err) {
       setMessage("Movie wasn't found");
     }
+  }
+
+  async function addToFavorites(
+    title,
+    id,
+    adult,
+    backdrop_path,
+    genres,
+    original_language,
+    original_title,
+    overview,
+    popularity,
+    poster_path,
+    release_date,
+    video,
+    vote_average,
+    vote_count
+  ) {
+    const token = localStorage.getItem("token");
+
+    let k = 0;
+
+    const genre_ids = [];
+
+    for (let value of genres) {
+      genre_ids.push(value.id);
+    }
+
+    favoriteMovies.forEach((movie) => {
+      if (movie.id === id) {
+        k = 1;
+      }
+    });
+
+    if (k) return;
+
+    try {
+      const response = await fetch(`${BACKEND_URL}/api/movies`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          title,
+          id,
+          adult,
+          backdrop_path,
+          genre_ids,
+          original_language,
+          original_title,
+          overview,
+          popularity,
+          poster_path,
+          release_date,
+          video,
+          vote_average,
+          vote_count,
+        }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        window.location.reload();
+      }
+    } catch (err) {}
+  }
+
+  async function deleteFromFavorites(id) {
+    const token = localStorage.getItem("token");
+
+    try {
+      const response = await fetch(`${BACKEND_URL}/api/movies/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (response.ok) {
+        window.location.reload();
+      }
+    } catch (err) {}
   }
 
   async function fetchMovieVideo() {
@@ -161,7 +276,67 @@ export default function MovieInfo() {
               )}
 
               <div className="movie-info-block text">
-                <h1 className={`name-text ${theme}`}>{movieInfo.title}</h1>
+                <h1
+                  className={`name-text ${theme}`}
+                  style={{
+                    display: "inline-block",
+                  }}
+                >
+                  {movieInfo.title}
+                </h1>
+
+                {favoriteMovies.forEach((item) => {
+                  if (item.id === movieInfo.id) {
+                    indexOfFavorites = true;
+                    return;
+                  }
+                })}
+
+                {indexOfFavorites ? (
+                  <button
+                    className={`movie-info-btn dislike ${theme}`}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      deleteFromFavorites(movieInfo.id);
+                    }}
+                    style={{
+                      display: `${userData.message ? "none" : "block"}`,
+                    }}
+                  >
+                    Dislike
+                  </button>
+                ) : (
+                  <button
+                    className={`movie-info-btn like ${theme}`}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      addToFavorites(
+                        movieInfo.title,
+                        movieInfo.id,
+                        movieInfo.adult,
+                        movieInfo.backdrop_path,
+                        movieInfo.genres,
+                        movieInfo.original_language,
+                        movieInfo.original_title,
+                        movieInfo.overview,
+                        movieInfo.popularity,
+                        movieInfo.poster_path,
+                        movieInfo.release_date,
+                        movieInfo.video,
+                        movieInfo.vote_average,
+                        movieInfo.vote_count
+                      );
+                    }}
+                    style={{
+                      display: `${userData.message ? "none" : "block"}`,
+                    }}
+                  >
+                    Like
+                  </button>
+                )}
+
+                {(indexOfFavorites = false)}
+
                 <br />
                 <p className={`main-text ${theme}`}>
                   <b>Genres: </b>
@@ -237,6 +412,15 @@ export default function MovieInfo() {
               </p>
             )}
 
+            <h3
+              style={{
+                color: `${theme === "dark-theme" ? "white" : "black"}`,
+              }}
+            >
+              Comments:
+            </h3>
+            <Comments movieID={movieID} user={userData} />
+
             <h3 className={`similar-movies-h3 ${theme}`}>Similar movies:</h3>
 
             <div
@@ -256,7 +440,7 @@ export default function MovieInfo() {
                   onMouseEnter={() => setHoveredIndex(movie.id)}
                   onMouseLeave={() => setHoveredIndex(null)}
                 >
-                  <button className={`info-btn ${theme}`}>i</button>
+                  <button className={`info-btn ${theme}`}></button>
 
                   <div className={`info-window ${theme}`}>
                     <h1 id="rate-h1" className={theme}>
