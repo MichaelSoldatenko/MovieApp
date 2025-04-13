@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(
   cors({
     origin:
-      "http://localhost:3000" /*"http://localhost:3000"  "https://movie-app-psi-inky.vercel.app"*/,
+      "https://movie-app-psi-inky.vercel.app" /*"http://localhost:3000"  "https://movie-app-psi-inky.vercel.app"*/,
   })
 );
 
