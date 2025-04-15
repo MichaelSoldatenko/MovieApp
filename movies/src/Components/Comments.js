@@ -157,7 +157,7 @@ export default function Comments({ movieID, user }) {
             return (
               <li key={comment._id} className={`comment-li ${theme}`}>
                 <p className={`comment-p user-name ${theme}`}>
-                  {comment.userId.userName}
+                  {comment.userId ? comment.userId.userName : "Account deleted"}
                 </p>
                 {edit && currentId === comment._id ? (
                   <form>
@@ -186,9 +186,11 @@ export default function Comments({ movieID, user }) {
                   <p className={`comment-p message ${theme}`}>{comment.text}</p>
                 )}
                 <span className={`comment-p date ${theme}`}>
-                  {convertDate(comment.createdAt)}
+                  {comment.createdAt
+                    ? convertDate(comment.createdAt)
+                    : "No data"}
                 </span>
-                {comment.userId._id === userData.id ? (
+                {comment.userId && comment.userId._id === userData.id ? (
                   <div className="edit-btns-div">
                     <button
                       className={`comment-btns change ${theme}`}
