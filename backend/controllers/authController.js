@@ -233,8 +233,8 @@ const forgotPassword = async (req, res) => {
 
     await transporter.sendMail({
       to: email,
-      subject: "Password Reset",
-      html: `<p>Click <a href="${resetLink}">here</a> to reset your password.</p>`,
+      subject: "Скидання паролю", //"Password Reset"
+      html: `<p>Натисніть <a href="${resetLink}">тут</a> щоб скинути Ваш пароль.</p>`, //`<p>Click <a href="${resetLink}">here</a> to reset your password.</p>`
     });
 
     res.json({ message: "Password reset email sent." });

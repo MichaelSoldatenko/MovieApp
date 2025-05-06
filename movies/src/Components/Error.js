@@ -17,7 +17,7 @@ export default function Error() {
           transform: "translate(-50%, -50%)",
         }}
       >
-        Page not found!
+        {/*Page not found!*/}Сторінку не знайдено
       </h1>
     </div>
   );

@@ -29,7 +29,7 @@ export default function ResetPassword() {
       );
 
       if (response.status >= 400 && response.status < 500) {
-        setMessage("Invalid token");
+        setMessage("Неправильний токен або час дії токену вийшов"); // "Invalid token"
       }
 
       if (response.ok) {
@@ -59,7 +59,7 @@ export default function ResetPassword() {
         >
           <input
             type={show}
-            placeholder="Enter your new password"
+            placeholder="Введіть Ваш новий пароль" //"Enter your new password"
             className={`login-signup-input ${theme}`}
           />
           <button
@@ -83,7 +83,7 @@ export default function ResetPassword() {
               window.location.href = "/";
             }}
           >
-            Cancel
+            {/*Cancel*/}Назад
           </button>
           <button
             style={{
@@ -92,7 +92,7 @@ export default function ResetPassword() {
             className={`login-signup-btn ${theme}`}
             type="submit"
           >
-            Next
+            {/*Next*/}Далі
           </button>
         </form>
         <p

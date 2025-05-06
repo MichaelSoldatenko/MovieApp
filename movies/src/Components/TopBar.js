@@ -21,29 +21,29 @@ export default function TopBar(props) {
       <div className={`navigation-div ${theme}`}>
         <h1 className={`navigation-h1 ${theme}`}>
           <a className={`home-a ${theme}`} href="/home">
-            Home
+            {/*Home*/}Головна
           </a>
         </h1>
         <div className={`down-list ${theme}`}>
           <div className={`navigation-ul ${theme}`}>
             <p className={`navigation-li ${theme}`}>
               <a className={`navigation-a ${theme}`} href="/genres">
-                Genres
+                {/*Genres*/}Жанри
               </a>
             </p>
             <p className={`navigation-li ${theme}`}>
               <a className={`navigation-a ${theme}`} href="/favorites">
-                Favorite
+                {/*Favorite*/}Улюблені
               </a>
             </p>
             <p className={`navigation-li ${theme}`}>
               <a className={`navigation-a ${theme}`} href="/profile">
-                Profile
+                {/*Profile*/}Профіль
               </a>
             </p>
             <p className={`navigation-li ${theme}`}>
               <a className={`navigation-a ${theme}`} href="/recs">
-                Recs
+                {/*Recs*/}Рекомендації
               </a>
             </p>
           </div>

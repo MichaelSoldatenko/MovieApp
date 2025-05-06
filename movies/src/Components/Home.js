@@ -47,8 +47,13 @@ export default function Home() {
     let k = 1920;
 
     while (k <= 2025) {
-      years.push(String(k));
-      k++;
+      if (k + 10 > 2025) {
+        years.push(`${k}-2025`);
+        break;
+      }
+
+      years.push(`${k}-${k + 10}`);
+      k += 10;
     }
   }
 
@@ -57,7 +62,7 @@ export default function Home() {
   useEffect(() => {
     setIsLoading(true);
     fetch(
-      `https://api.themoviedb.org/3/discover/movie?language=en-US&page=${currentPage}&sort_by=${sortBy}&primary_release_date.gte=${yearBegin}-01-01&primary_release_date.lte=${yearEnd}-12-31&with_origin_country=${country}`,
+      `https://api.themoviedb.org/3/discover/movie?language=uk&page=${currentPage}&sort_by=${sortBy}&primary_release_date.gte=${yearBegin}-01-01&primary_release_date.lte=${yearEnd}-12-31&with_origin_country=${country}`, //en-US
       options
     )
       .then((response) => response.json())
@@ -111,9 +116,19 @@ export default function Home() {
 
   function getFullGenres(idArr) {
     const genres = [];
+
     idArr.forEach((id) => {
-      genres.push(genresArr.movie_genres_ids[id]);
+      if (id instanceof Object) {
+        for (const value in id) {
+          if (value === "name") {
+            genres.push(id[value]);
+          }
+        }
+      } else {
+        genres.push(genresArr.movie_genres_ids[id]);
+      }
     });
+
     return genres.join(", ");
   }
 
@@ -210,11 +225,19 @@ export default function Home() {
     } catch (err) {}
   }
 
+  function manageYearSort(e) {
+    const val = e.target.value;
+    setYearBegin(val.split("-")[0]);
+    setYearEnd(val.split("-")[1]);
+  }
+
   return (
     <div>
       <TopBar />
 
-      <h1 className={`title-h1 ${theme}`}>Popular Movies & TV Shows</h1>
+      <h1 className={`title-h1 ${theme}`}>
+        {/*Popular Movies & TV Shows*/}Популярні Фільми та Телешоу
+      </h1>
       <div className="sorting-div">
         <select
           name="sorting"
@@ -227,19 +250,19 @@ export default function Home() {
             className={`sorting-option ${theme}`}
             defaultValue
           >
-            Popular
+            Популярність {/*Popular*/}
           </option>
           <option
             value="release_date.desc"
             className={`sorting-option ${theme}`}
           >
-            Release Date
+            Дата релізу {/*Release Date*/}
           </option>
           <option
             value="vote_average.desc"
             className={`sorting-option ${theme}`}
           >
-            Rating
+            Рейтинг {/*Rating*/}
           </option>
         </select>
 
@@ -251,12 +274,9 @@ export default function Home() {
             style={{
               position: "static",
             }}
-            onChange={(e) => {
-              setYearBegin(e.target.value);
-              setYearEnd(e.target.value);
-            }}
+            onChange={(e) => manageYearSort(e)}
           >
-            <option value="">Year</option>
+            <option value="">{/*Year*/}Рік</option>
             {years.map((year) => {
               return (
                 <option value={year} key={year}>
@@ -278,7 +298,7 @@ export default function Home() {
               setCountry(e.target.value);
             }}
           >
-            <option value="">All</option>
+            <option value="">{/*All countries*/}Всі країни</option>
             {countries.countries_list.map((country) => {
               return (
                 <option value={country.iso_3166_1} key={country.iso_3166_1}>
@@ -305,19 +325,20 @@ export default function Home() {
 
             <div className={`info-window ${theme}`}>
               <h1 id="rate-h1" className={theme}>
-                Rate: {movie.vote_average.toFixed(1)}/10
+                {/*Rate*/}Рейтинг: {movie.vote_average.toFixed(1)}/10
               </h1>
 
               <p className={`info-window-p ${theme}`}>
-                <b>Original title:</b> {movie.original_title}
+                <b>{/*Original title*/}Оригінальна назва:</b>{" "}
+                {movie.original_title}
               </p>
 
               <p className={`info-window-p ${theme}`}>
-                <b>Genres:</b> {getFullGenres(movie.genre_ids)}
+                <b>{/*Genres*/}Жанри:</b> {getFullGenres(movie.genre_ids)}
               </p>
 
               <h2 id="overview-h1" className={theme}>
-                Overview
+                {/*Overview*/}Огляд
               </h2>
 
               <div className="overview-div">
@@ -419,8 +440,10 @@ export default function Home() {
       <footer className="tmdb-footer">
         <img src="tmdb.svg" alt="tmdb-icon" className="tmdb-icon" />
         <p className={`tmdb-p ${theme}`}>
-          This product uses TMDB and the TMDB APIs but is not endorsed,
-          certified, or otherwise approved by TMDB.
+          Цей продукт використовує TMDB та API-інтерфейси TMDB, але не
+          схвалений, не сертифікований або іншим чином не затверджений TMDB.
+          {/*This product uses TMDB and the TMDB APIs but is not endorsed,
+          certified, or otherwise approved by TMDB.*/}
         </p>
       </footer>
     </div>

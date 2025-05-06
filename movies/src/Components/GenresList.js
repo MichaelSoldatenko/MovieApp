@@ -22,7 +22,7 @@ export default function GenresList() {
   async function fetchGenresList() {
     try {
       const response = await fetch(
-        `https://api.themoviedb.org/3/genre/movie/list?language=en`,
+        `https://api.themoviedb.org/3/genre/movie/list?language=uk`, //en
         options
       );
       const data = await response.json();
@@ -49,7 +49,7 @@ export default function GenresList() {
           left: "20px",
         }}
       >
-        Select Your Genre:
+        {/*Select Your Genre:*/}Виберіть Свій Жанр:
       </h1>
 
       <div className="genres-list">

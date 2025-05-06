@@ -14,7 +14,7 @@ export default function Preferences() {
 
   function savePreferences() {
     if (selectedGenres.length === 0) {
-      setMessage("Choose at least one genre to continue");
+      setMessage("Виберіть принаймні один жанр щоб продовжити"); //"Choose at least one genre to continue"
       return;
     }
     localStorage.setItem("preferences", selectedGenres);
@@ -33,7 +33,7 @@ export default function Preferences() {
     async function fetchGenres() {
       try {
         const response = await fetch(
-          `https://api.themoviedb.org/3/genre/movie/list?language=en`,
+          `https://api.themoviedb.org/3/genre/movie/list?language=uk`, //en
           {
             method: "GET",
             headers: {
@@ -87,7 +87,7 @@ export default function Preferences() {
         {message}
       </p>
       <button className={theme} onClick={savePreferences} id="continue-btn">
-        Continue
+        {/*Continue*/}Далі
       </button>
       <div className="genres-div">
         {genresList.map((item) => (

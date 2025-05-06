@@ -38,7 +38,7 @@ export default function SignUp() {
     }
 
     if (password.length < 8) {
-      setMessage("Password length must have no less than 8 characters!");
+      setMessage("Довжина паролю повинна бути не менше 8 символів!"); //"Password length must have no less than 8 characters!"
       return;
     }
 
@@ -65,7 +65,7 @@ export default function SignUp() {
 
     if (!k1 || !k2 || !k3) {
       setMessage(
-        "Password must have at least one letter, one number and one special character"
+        "Пароль повинен містити принаймні одну латинську літеру, одну цифру і один спецсимвол" //"Password must have at least one letter, one number and one special character"
       );
       return;
     }
@@ -85,7 +85,7 @@ export default function SignUp() {
       });
 
       if (response.status >= 400 && response.status < 500) {
-        setMessage("Invalid data");
+        setMessage("Некоректні дані"); //"Invalid data"
       }
 
       if (response.ok) {
@@ -93,7 +93,7 @@ export default function SignUp() {
         setColor("");
       }
     } catch (err) {
-      setMessage("An error was happened. Try later");
+      setMessage("Сталася помилка. Спробуйте пізніше"); //"An error was happened. Try later"
     }
   }
 
@@ -129,13 +129,15 @@ export default function SignUp() {
           >
             {message}
           </p>
-          <h1 className={`login-signup-h1 ${theme}`}>Sign Up</h1>
+          <h1 className={`login-signup-h1 ${theme}`}>
+            Реєстрація{/*Sign Up*/}
+          </h1>
           <input
             type="text"
             name="username"
             id="username"
             ref={userNameRef}
-            placeholder="User Name"
+            placeholder="Ім'я користувача" //"User Name"
             className={`login-signup-input ${theme}`}
           />
           <input
@@ -143,7 +145,7 @@ export default function SignUp() {
             name="email"
             id="email"
             ref={emailRef}
-            placeholder="Email"
+            placeholder="Електронна пошта" //"Email"
             className={`login-signup-input ${theme}`}
           />
           <input
@@ -151,7 +153,7 @@ export default function SignUp() {
             name="password"
             id="password"
             ref={passwordRef}
-            placeholder="Password"
+            placeholder="Пароль" //"Password"
             className={`login-signup-input ${theme}`}
           />
           <button
@@ -169,7 +171,7 @@ export default function SignUp() {
             name="repeat"
             id="repeat"
             ref={repeatPasRef}
-            placeholder="Repeat Password"
+            placeholder="Повторний пароль" //"Repeat Password"
             className={`login-signup-input ${theme}`}
             style={{
               backgroundColor: color,
@@ -177,13 +179,13 @@ export default function SignUp() {
           />
           <select name="gender" id="gender" className={theme} ref={genderRef}>
             <option value="Male" className={`gender-options ${theme}`}>
-              Male
+              Чоловік{/*Male*/}
             </option>
             <option value="Female" className={`gender-options ${theme}`}>
-              Female
+              Жінка{/*Female*/}
             </option>
             <option value="Other" className={`gender-options ${theme}`}>
-              Other
+              Інше{/*Other*/}
             </option>
           </select>
 
@@ -191,11 +193,13 @@ export default function SignUp() {
             className={`login-signup-btn ${theme}`}
             onClick={handleRegistration}
           >
-            Sign Up
+            Реєстрація{/*Sign Up*/}
           </button>
-          <p className={`login-signup-p ${theme}`}>Already have an account?</p>
+          <p className={`login-signup-p ${theme}`}>
+            Вже маєте акаунт?{/*Already have an account?*/}
+          </p>
           <a href="/" className={`login-signup-a ${theme}`}>
-            Authorize
+            Авторизуйтеся{/*Authorize*/}
           </a>
         </div>
       </div>

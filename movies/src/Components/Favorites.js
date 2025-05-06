@@ -127,7 +127,9 @@ export default function Favorites() {
     <div>
       <TopBar />
 
-      <h1 className={`title-h1 ${theme}`}>Your Liked Movies & TV Shows</h1>
+      <h1 className={`title-h1 ${theme}`}>
+        {/*Your Liked Movies & TV Shows*/}Ваші Улюблені Фільми та Телешоу
+      </h1>
 
       <select
         name="sorting"

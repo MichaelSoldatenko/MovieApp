@@ -40,12 +40,12 @@ export default function Genres() {
   async function fetchGenre() {
     try {
       const response = await fetch(
-        `https://api.themoviedb.org/3/discover/movie?with_genres=${genreID}&page=${currentPage}&sort_by=${sortBy}`,
+        `https://api.themoviedb.org/3/discover/movie?with_genres=${genreID}&page=${currentPage}&sort_by=${sortBy}&language=uk`, //en
         options
       );
 
       if (response.status >= 400 && response.status < 500) {
-        setMessage("Invalid genre ID");
+        setMessage("Неправильне ID жанру"); //"Invalid genre ID"
       }
 
       if (response.ok) {
@@ -60,7 +60,7 @@ export default function Genres() {
         });
       }
     } catch (err) {
-      setMessage("An error was happened");
+      setMessage("Сталася помилка. Спробуйте пізніше"); //"An error was happened"
     }
   }
 
@@ -222,35 +222,38 @@ export default function Genres() {
               color: `${theme === "dark-theme" ? "white" : "black"}`,
             }}
           >
-            Best {genresArr.movie_genres_ids[genreID]} movies:
+            {/*Best {genresArr.movie_genres_ids[genreID]} movies:*/} Найкращі
+            фільми жанру"{genresArr.movie_genres_ids[genreID]}":
           </h1>
 
-          <select
-            name="sorting"
-            id="sorting-select"
-            className={theme}
-            onChange={(e) => setSortBy(e.target.value)}
-          >
-            <option
-              value="popularity.desc"
-              className={`sorting-option ${theme}`}
-              defaultValue
+          <div className="sorting-div">
+            <select
+              name="sorting"
+              id="sorting-select"
+              className={`${theme} sorting-select`}
+              onChange={(e) => setSortBy(e.target.value)}
             >
-              Popular
-            </option>
-            <option
-              value="release_date.desc"
-              className={`sorting-option ${theme}`}
-            >
-              Release Date
-            </option>
-            <option
-              value="vote_average.desc"
-              className={`sorting-option ${theme}`}
-            >
-              Rating
-            </option>
-          </select>
+              <option
+                value="popularity.desc"
+                className={`sorting-option ${theme}`}
+                defaultValue
+              >
+                Popular
+              </option>
+              <option
+                value="release_date.desc"
+                className={`sorting-option ${theme}`}
+              >
+                Release Date
+              </option>
+              <option
+                value="vote_average.desc"
+                className={`sorting-option ${theme}`}
+              >
+                Rating
+              </option>
+            </select>
+          </div>
 
           <div className="movie-list-div">
             {genreMovies.map((movie, index) => (

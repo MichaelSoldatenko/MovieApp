@@ -139,14 +139,14 @@ export default function Comments({ movieID, user }) {
         {userData.message !== "Invalid token" ? (
           <div>
             <textarea
-              placeholder="Enter the comment..."
+              placeholder="Введіть коментар..." //"Enter the comment..."
               name="comment"
               className={`add-comment-area ${theme}`}
               ref={textRef}
             ></textarea>
             <br />
             <button className={`add-comment-btn ${theme}`} onClick={addComment}>
-              Add the comment
+              {/*Add the comment*/}Додати коментар
             </button>{" "}
           </div>
         ) : (
@@ -179,7 +179,7 @@ export default function Comments({ movieID, user }) {
                         )
                       }
                     >
-                      Save
+                      {/*Save*/}Ок
                     </button>
                   </form>
                 ) : (

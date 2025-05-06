@@ -75,11 +75,11 @@ export default function Recs() {
             let response2;
             if (k === 1) {
               response2 = await fetch(
-                `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=${genre}`
+                `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=${genre}&language=uk` //en
               );
             } else if (k === 0) {
               response2 = await fetch(
-                `https://api.themoviedb.org/3/search/movie?query=${genre}&language=en-US`,
+                `https://api.themoviedb.org/3/search/movie?query=${genre}&language=uk`, //en-US
                 options
               );
             }
@@ -210,11 +210,13 @@ export default function Recs() {
     <div>
       <TopBar />
 
-      <h1 className={`title-h1 ${theme}`}>Your recommendations:</h1>
+      <h1 className={`title-h1 ${theme}`}>
+        {/*Your recommendations:*/}Ваші рекомендації:
+      </h1>
 
       <div className="movie-list-div">
         {loading ? (
-          <p>Loading...</p>
+          <p>{/*Loading...*/}Завантаження...</p>
         ) : (
           recs.map((movie, index) => (
             <div
@@ -230,19 +232,20 @@ export default function Recs() {
 
               <div className={`info-window ${theme}`}>
                 <h1 id="rate-h1" className={theme}>
-                  Rate: {movie.vote_average.toFixed(1)}/10
+                  {/*Rate:*/}Рейтинг: {movie.vote_average.toFixed(1)}/10
                 </h1>
 
                 <p className={`info-window-p ${theme}`}>
-                  <b>Original title:</b> {movie.original_title}
+                  <b>{/*Original title:*/}Оригінальна назва: </b>{" "}
+                  {movie.original_title}
                 </p>
 
                 <p className={`info-window-p ${theme}`}>
-                  <b>Genres:</b> {getFullGenres(movie.genre_ids)}
+                  <b>{/*Genres:*/}Жанри: </b> {getFullGenres(movie.genre_ids)}
                 </p>
 
                 <h2 id="overview-h1" className={theme}>
-                  Overview
+                  {/*Overview*/}Огляд
                 </h2>
 
                 <div className="overview-div">

@@ -214,7 +214,8 @@ export default function Profile() {
             <div className={`modal-div ${theme}`}>
               <form onSubmit={deleteAccount} className="modal-form">
                 <h2 className={`modal-h2 ${theme}`}>
-                  Are you sure you want to delete the account?
+                  {/*Are you sure you want to delete the account?*/}Ви впевнені,
+                  що бажаєте видалити цей акаунт?
                 </h2>
                 <button
                   onClick={(e) => {
@@ -223,10 +224,10 @@ export default function Profile() {
                   }}
                   className={`modal-btns ${theme}`}
                 >
-                  Cancel
+                  {/*Cancel*/}Назад
                 </button>
                 <button type="submit" className={`modal-btns ${theme}`}>
-                  Delete
+                  {/*Delete*/}Видалити
                 </button>
               </form>
             </div>
@@ -244,7 +245,7 @@ export default function Profile() {
                 />
                 <br />
                 <button className={`modal-btns ${theme}`} type="submit">
-                  Change
+                  {/*Change*/}Змінити
                 </button>
                 <button
                   className={`modal-btns ${theme}`}
@@ -253,7 +254,7 @@ export default function Profile() {
                     setHiddenName("hidden");
                   }}
                 >
-                  Cancel
+                  {/*Cancel*/}Назад
                 </button>
               </form>
             </div>
@@ -263,13 +264,13 @@ export default function Profile() {
             <div className={`modal-div ${theme}`}>
               <form onSubmit={checkPass} className="modal-form">
                 <h2 className={`modal-h2 ${theme}`}>
-                  Enter your old password:
+                  {/*Enter your old password:*/}Введіть свій старий пароль:
                 </h2>
                 <input
                   name="currentpasInput"
                   type={show}
                   className={`modal-input ${theme}`}
-                  placeholder="Enter"
+                  placeholder="Ввести" //"Enter"
                 />
                 <button
                   className="eye-btn"
@@ -283,7 +284,7 @@ export default function Profile() {
                 ></button>
                 <br />
                 <button type="submit" className={`modal-btns ${theme}`}>
-                  Next
+                  {/*Next*/}Далі
                 </button>
                 <button
                   className={`modal-btns ${theme}`}
@@ -292,7 +293,7 @@ export default function Profile() {
                     setHiddenPasOld("hidden");
                   }}
                 >
-                  Cancel
+                  {/*Cancel*/}Назад
                 </button>
               </form>
             </div>
@@ -301,13 +302,15 @@ export default function Profile() {
           <div className={`modal-background ${hiddenPasNew}`}>
             <div className={`modal-div ${theme}`}>
               <form onSubmit={changePass} className="modal-form">
-                <h2 className={`modal-h2 ${theme}`}>Create new password:</h2>
+                <h2 className={`modal-h2 ${theme}`}>
+                  {/*Create new password:*/}Створіть новий пароль:
+                </h2>
                 <input
                   ref={newPasswordRef}
                   name="newpasInput"
                   type={show}
                   className={`modal-input ${theme}`}
-                  placeholder="Enter"
+                  placeholder="Ввести" //"Enter"
                 />
                 <button
                   className="eye-btn"
@@ -322,7 +325,7 @@ export default function Profile() {
                 ></button>
                 <br />
                 <button type="submit" className={`modal-btns ${theme}`}>
-                  Change
+                  {/*Change*/}Змінити
                 </button>
                 <button
                   className={`modal-btns ${theme}`}
@@ -331,7 +334,7 @@ export default function Profile() {
                     setHiddenPasNew("hidden");
                   }}
                 >
-                  Cancel
+                  {/*Cancel*/}Назад
                 </button>
               </form>
             </div>
@@ -352,7 +355,7 @@ export default function Profile() {
                   paddingTop: "6px",
                 }}
               >
-                Change photo
+                {/*Change photo*/}Змінити фото
               </label>
               <input
                 id="file-input"
@@ -366,24 +369,26 @@ export default function Profile() {
                   className={`profile-change-photo-btn ${theme}`}
                   onClick={uploadAvatar}
                 >
-                  Save
+                  {/*Save*/}Зберегти
                 </button>
               )}
             </div>
 
             <div className={`profile-info-div ${theme}`}>
-              <h1 className={`title-text ${theme}`}>User Info</h1>
+              <h1 className={`title-text ${theme}`}>
+                {/*User Info*/}Інформація про користувача
+              </h1>
               <p className={`profile-info-text ${theme}`}>
-                <b>User Name:</b> {userData.userName}
+                <b>{/*User Name:*/} Ім'я користувача:</b> {userData.userName}
               </p>
               <p className={`profile-info-text ${theme}`}>
-                <b>Email:</b> {userData.email}
+                <b>{/*Email:*/} Електронна пошта:</b> {userData.email}
               </p>
               <p className={`profile-info-text ${theme}`}>
-                <b>Gender:</b> {userData.gender}
+                <b>{/*Gender:*/} Стать:</b> {userData.gender}
               </p>
               <p className={`profile-info-text ${theme}`}>
-                <b>About:</b> {userData.about}
+                <b>{/*About:*/} Персональна інформація:</b> {userData.about}
               </p>
 
               <div>
@@ -392,18 +397,20 @@ export default function Profile() {
                     className={`change-bio-btn ${theme}`}
                     onClick={() => setHiddenBio("")}
                   >
-                    Change bio
+                    {/*Change bio*/}Змінити біо
                   </button>
                 ) : (
                   <form onSubmit={addAbout}>
-                    <h4 className={`title ${theme}`}>Add bio:</h4>
+                    <h4 className={`title ${theme}`}>
+                      {/*Add bio:*/}Додати біо:
+                    </h4>
                     <textarea
                       className={`add-info-area ${theme}`}
-                      placeholder="Enter info..."
+                      placeholder="Введіть інформацію..." //"Enter info..."
                     ></textarea>
                     <br />
                     <button type="submit" className={`save-btn ${theme}`}>
-                      Save
+                      {/*Save*/}Ок
                     </button>
                   </form>
                 )}
@@ -421,17 +428,17 @@ export default function Profile() {
                   <h4 className={`title ${theme}`}>Add bio:</h4>
                   <textarea
                     className={`add-info-area ${theme}`}
-                    placeholder="Enter info..."
+                    placeholder="Введіть інформацію..." //"Enter info..."
                   ></textarea>
                   <br />
                   <button type="submit" className={`save-btn ${theme}`}>
-                    Save
+                    {/*Save*/}Ок
                   </button>
                   <button
                     className={`save-btn ${theme}`}
                     onClick={() => setHiddenBio("hidden")}
                   >
-                    Close
+                    {/*Close*/}Відміна
                   </button>
                 </form>
               </div>
@@ -443,14 +450,14 @@ export default function Profile() {
                 className={`control-btns ${theme} edit`}
                 onClick={() => setHiddenName("")}
               >
-                Change username
+                {/*Change username*/}Змінити ім'я
               </button>
               <br />
               <button
                 className={`control-btns ${theme} edit`}
                 onClick={() => setHiddenPasOld("")}
               >
-                Change password
+                {/*Change password*/}Змінити пароль
               </button>
               <br />
               <button
@@ -458,7 +465,7 @@ export default function Profile() {
                 onClick={leave}
                 id="leave-btn"
               >
-                Leave
+                {/*Leave*/}Вийти
               </button>
               <br />
               <button
@@ -466,7 +473,7 @@ export default function Profile() {
                 onClick={() => setDeleteWindow("")}
                 id="delete-btn"
               >
-                Delete Account
+                {/*Delete Account*/}Видалити акаунт
               </button>
             </div>
           </div>
@@ -478,7 +485,7 @@ export default function Profile() {
           }}
           className={`profile-login-btn ${theme}`}
         >
-          Log In
+          {/*Log In*/}Увійти
         </button>
       )}
     </div>

@@ -66,7 +66,7 @@ export default function ProfileWindow(props) {
               window.location.href = "/";
             }}
           >
-            Log In
+            {/*Log In*/}Увійти
           </button>
         ) : (
           <div>
@@ -91,11 +91,11 @@ export default function ProfileWindow(props) {
             </p>
             <hr className={`profile-hr ${theme}`} />
             <div className={`profile-text button ${theme}`} onClick={logOut}>
-              Log Out
+              {/*Log Out*/}Вийти
             </div>
             <hr className={`profile-hr ${theme}`} />
             <div className={`profile-text button ${theme}`} onClick={moreInfo}>
-              More Info
+              {/*More Info*/}Більше інформації
             </div>
           </div>
         )}

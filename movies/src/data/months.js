@@ -1,5 +1,22 @@
 const months_nums = {
-  "01": "January",
+  "01": "Січень",
+  "02": "Лютий",
+  "03": "Березень",
+  "04": "Квітень",
+  "05": "Травень",
+  "06": "Червень",
+  "07": "Липень",
+  "08": "Серпень",
+  "09": "Вересень",
+  10: "Жовтень",
+  11: "Листопад",
+  12: "Грудень",
+};
+
+export default { months_nums };
+
+/*
+"01": "January",
   "02": "February",
   "03": "March",
   "04": "April",
@@ -11,6 +28,4 @@ const months_nums = {
   10: "October",
   11: "November",
   12: "December",
-};
-
-export default { months_nums };
+*/
