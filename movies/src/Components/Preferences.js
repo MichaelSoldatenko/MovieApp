@@ -79,9 +79,10 @@ export default function Preferences() {
         className={`message-p`}
         style={{
           color: "red",
-          top: "5%",
+          top: "2%",
+          left: "75%",
           height: "20px",
-          width: "300px",
+          width: "400px",
         }}
       >
         {message}

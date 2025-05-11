@@ -59,7 +59,7 @@ export default function ProfileWindow(props) {
         )}
       </button>
       <div className={`profile-div ${theme} ${hidden}`}>
-        {userData.message ? (
+        {localStorage.getItem("token") === "null" ? (
           <button
             className={`login-btn ${theme}`}
             onClick={() => {

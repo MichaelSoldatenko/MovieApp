@@ -235,7 +235,9 @@ export default function Profile() {
           <div className={`modal-background ${hiddenName}`}>
             <div className={`modal-div ${theme}`}>
               <form onSubmit={changeName} className="modal-form">
-                <h2 className={`modal-h2 ${theme}`}>Enter new username:</h2>
+                <h2 className={`modal-h2 ${theme}`}>
+                  {/*Enter new username:*/} Введіть нове ім'я користувача:
+                </h2>
                 <input
                   ref={userNameRef}
                   name="usernameInput"

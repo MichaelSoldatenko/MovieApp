@@ -157,7 +157,11 @@ export default function Comments({ movieID, user }) {
             return (
               <li key={comment._id} className={`comment-li ${theme}`}>
                 <p className={`comment-p user-name ${theme}`}>
-                  {comment.userId ? comment.userId.userName : "Account deleted"}
+                  {
+                    comment.userId
+                      ? comment.userId.userName
+                      : "Видалений акаунт" /*"Account deleted"*/
+                  }
                 </p>
                 {edit && currentId === comment._id ? (
                   <form>

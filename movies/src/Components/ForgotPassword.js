@@ -39,7 +39,14 @@ export default function ForgotPassword() {
   return (
     <div>
       <div className={`forgot-reset-password-div ${theme}`}>
-        <label className="checkbox-label" htmlFor="checkbox">
+        <label
+          className="checkbox-label"
+          htmlFor="checkbox"
+          style={{
+            top: "5%",
+            right: "15%",
+          }}
+        >
           <input
             type="checkbox"
             onChange={toggleTheme}
