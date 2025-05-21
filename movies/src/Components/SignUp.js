@@ -178,13 +178,22 @@ export default function SignUp() {
             }}
           />
           <select name="gender" id="gender" className={theme} ref={genderRef}>
-            <option value="Male" className={`gender-options ${theme}`}>
+            <option
+              value="Чоловік"
+              /*"Male"*/ className={`gender-options ${theme}`}
+            >
               Чоловік{/*Male*/}
             </option>
-            <option value="Female" className={`gender-options ${theme}`}>
+            <option
+              value="Жінка"
+              /*"Female"*/ className={`gender-options ${theme}`}
+            >
               Жінка{/*Female*/}
             </option>
-            <option value="Other" className={`gender-options ${theme}`}>
+            <option
+              value="Інша"
+              /*"Other"*/ className={`gender-options ${theme}`}
+            >
               Інше{/*Other*/}
             </option>
           </select>

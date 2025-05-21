@@ -238,19 +238,19 @@ export default function Genres() {
                 className={`sorting-option ${theme}`}
                 defaultValue
               >
-                Popular
+                Популярність{/*Popular*/}
               </option>
               <option
                 value="release_date.desc"
                 className={`sorting-option ${theme}`}
               >
-                Release Date
+                Дата релізу {/*Release Date*/}
               </option>
               <option
                 value="vote_average.desc"
                 className={`sorting-option ${theme}`}
               >
-                Rating
+                Рейтинг {/*Rating*/}
               </option>
             </select>
           </div>
