@@ -38,7 +38,7 @@ export default function SignUp() {
     }
 
     if (password.length < 8) {
-      setMessage("Довжина паролю повинна бути не менше 8 символів!"); //"Password length must have no less than 8 characters!"
+      setMessage("Password length must have no less than 8 characters!");
       return;
     }
 
@@ -65,7 +65,7 @@ export default function SignUp() {
 
     if (!k1 || !k2 || !k3) {
       setMessage(
-        "Пароль повинен містити принаймні одну латинську літеру, одну цифру і один спецсимвол" //"Password must have at least one letter, one number and one special character"
+        "Password must have at least one letter, one number and one special character"
       );
       return;
     }
@@ -85,7 +85,7 @@ export default function SignUp() {
       });
 
       if (response.status >= 400 && response.status < 500) {
-        setMessage("Некоректні дані"); //"Invalid data"
+        setMessage("Invalid data");
       }
 
       if (response.ok) {
@@ -93,7 +93,7 @@ export default function SignUp() {
         setColor("");
       }
     } catch (err) {
-      setMessage("Сталася помилка. Спробуйте пізніше"); //"An error was happened. Try later"
+      setMessage("An error was happened. Try later");
     }
   }
 
@@ -129,15 +129,13 @@ export default function SignUp() {
           >
             {message}
           </p>
-          <h1 className={`login-signup-h1 ${theme}`}>
-            Реєстрація{/*Sign Up*/}
-          </h1>
+          <h1 className={`login-signup-h1 ${theme}`}>Sign Up</h1>
           <input
             type="text"
             name="username"
             id="username"
             ref={userNameRef}
-            placeholder="Ім'я користувача" //"User Name"
+            placeholder="User Name"
             className={`login-signup-input ${theme}`}
           />
           <input
@@ -145,7 +143,7 @@ export default function SignUp() {
             name="email"
             id="email"
             ref={emailRef}
-            placeholder="Електронна пошта" //"Email"
+            placeholder="Email"
             className={`login-signup-input ${theme}`}
           />
           <input
@@ -153,7 +151,7 @@ export default function SignUp() {
             name="password"
             id="password"
             ref={passwordRef}
-            placeholder="Пароль" //"Password"
+            placeholder="Password"
             className={`login-signup-input ${theme}`}
           />
           <button
@@ -171,30 +169,21 @@ export default function SignUp() {
             name="repeat"
             id="repeat"
             ref={repeatPasRef}
-            placeholder="Повторний пароль" //"Repeat Password"
+            placeholder="Repeat Password"
             className={`login-signup-input ${theme}`}
             style={{
               backgroundColor: color,
             }}
           />
           <select name="gender" id="gender" className={theme} ref={genderRef}>
-            <option
-              value="Чоловік"
-              /*"Male"*/ className={`gender-options ${theme}`}
-            >
-              Чоловік{/*Male*/}
+            <option value="Male" className={`gender-options ${theme}`}>
+              Male
             </option>
-            <option
-              value="Жінка"
-              /*"Female"*/ className={`gender-options ${theme}`}
-            >
-              Жінка{/*Female*/}
+            <option value="Female" className={`gender-options ${theme}`}>
+              Female
             </option>
-            <option
-              value="Інша"
-              /*"Other"*/ className={`gender-options ${theme}`}
-            >
-              Інше{/*Other*/}
+            <option value="Other" className={`gender-options ${theme}`}>
+              Other
             </option>
           </select>
 
@@ -202,13 +191,11 @@ export default function SignUp() {
             className={`login-signup-btn ${theme}`}
             onClick={handleRegistration}
           >
-            Реєстрація{/*Sign Up*/}
+            Sign Up
           </button>
-          <p className={`login-signup-p ${theme}`}>
-            Вже маєте акаунт?{/*Already have an account?*/}
-          </p>
+          <p className={`login-signup-p ${theme}`}>Already have an account?</p>
           <a href="/" className={`login-signup-a ${theme}`}>
-            Авторизуйтеся{/*Authorize*/}
+            Authorize
           </a>
         </div>
       </div>

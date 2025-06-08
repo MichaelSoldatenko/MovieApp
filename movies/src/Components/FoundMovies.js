@@ -40,7 +40,7 @@ export default function FoundMovies() {
       const response = await fetch(
         `https://api.themoviedb.org/3/search/movie?query=${encodeURIComponent(
           foundMovies
-        )}&language=uk&page=${currentPage}`, //en-US
+        )}&language=en-US&page=${currentPage}`,
         options
       );
       const data = await response.json();
@@ -209,7 +209,7 @@ export default function FoundMovies() {
               transform: "translate(-50%, -50%)",
             }}
           >
-            {/*No results*/}Немає результатів
+            No results
           </h2>
         </div>
       ) : (
@@ -224,8 +224,7 @@ export default function FoundMovies() {
               color: `${theme === "dark-theme" ? "white" : "black"}`,
             }}
           >
-            {/*Results that contain*/}Результати пошуку які містять "
-            {foundMovies}":
+            Results that contain "{foundMovies}":
           </h2>
 
           <div className="movie-list-div">

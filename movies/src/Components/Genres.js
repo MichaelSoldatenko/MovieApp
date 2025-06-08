@@ -40,12 +40,12 @@ export default function Genres() {
   async function fetchGenre() {
     try {
       const response = await fetch(
-        `https://api.themoviedb.org/3/discover/movie?with_genres=${genreID}&page=${currentPage}&sort_by=${sortBy}&language=uk`, //en
+        `https://api.themoviedb.org/3/discover/movie?with_genres=${genreID}&page=${currentPage}&sort_by=${sortBy}&language=en`,
         options
       );
 
       if (response.status >= 400 && response.status < 500) {
-        setMessage("Неправильне ID жанру"); //"Invalid genre ID"
+        setMessage("Invalid genre ID");
       }
 
       if (response.ok) {
@@ -60,7 +60,7 @@ export default function Genres() {
         });
       }
     } catch (err) {
-      setMessage("Сталася помилка. Спробуйте пізніше"); //"An error was happened"
+      setMessage("An error was happened");
     }
   }
 
@@ -222,8 +222,7 @@ export default function Genres() {
               color: `${theme === "dark-theme" ? "white" : "black"}`,
             }}
           >
-            {/*Best {genresArr.movie_genres_ids[genreID]} movies:*/} Найкращі
-            фільми жанру"{genresArr.movie_genres_ids[genreID]}":
+            Best {genresArr.movie_genres_ids[genreID]} movies:
           </h1>
 
           <div className="sorting-div">
@@ -238,19 +237,19 @@ export default function Genres() {
                 className={`sorting-option ${theme}`}
                 defaultValue
               >
-                Популярність{/*Popular*/}
+                Popular
               </option>
               <option
                 value="release_date.desc"
                 className={`sorting-option ${theme}`}
               >
-                Дата релізу {/*Release Date*/}
+                Release Date
               </option>
               <option
                 value="vote_average.desc"
                 className={`sorting-option ${theme}`}
               >
-                Рейтинг {/*Rating*/}
+                Rating
               </option>
             </select>
           </div>

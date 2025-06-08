@@ -139,14 +139,14 @@ export default function Comments({ movieID, user }) {
         {userData.message !== "Invalid token" ? (
           <div>
             <textarea
-              placeholder="Введіть коментар..." //"Enter the comment..."
+              placeholder="Enter the comment..."
               name="comment"
               className={`add-comment-area ${theme}`}
               ref={textRef}
             ></textarea>
             <br />
             <button className={`add-comment-btn ${theme}`} onClick={addComment}>
-              {/*Add the comment*/}Додати коментар
+              Add the comment
             </button>{" "}
           </div>
         ) : (
@@ -157,11 +157,7 @@ export default function Comments({ movieID, user }) {
             return (
               <li key={comment._id} className={`comment-li ${theme}`}>
                 <p className={`comment-p user-name ${theme}`}>
-                  {
-                    comment.userId
-                      ? comment.userId.userName
-                      : "Видалений акаунт" /*"Account deleted"*/
-                  }
+                  {comment.userId ? comment.userId.userName : "Account deleted"}
                 </p>
                 {edit && currentId === comment._id ? (
                   <form>
@@ -183,7 +179,7 @@ export default function Comments({ movieID, user }) {
                         )
                       }
                     >
-                      {/*Save*/}Ок
+                      Save
                     </button>
                   </form>
                 ) : (

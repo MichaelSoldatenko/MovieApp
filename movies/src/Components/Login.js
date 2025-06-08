@@ -39,7 +39,7 @@ export default function Login() {
 
       if (response.status >= 400 && response.status < 500) {
         setColor("pink");
-        setMessage("Неправильний логін або пароль"); //"Invalid user name or password"
+        setMessage("Invalid user name or password");
       }
 
       if (response.ok) {
@@ -50,7 +50,7 @@ export default function Login() {
         else window.location.href = "/preferences";
       }
     } catch (err) {
-      setMessage("Сталася помилка. Спробуйте пізніше"); //"An error was happend. Try later"
+      setMessage("An error was happend. Try later");
     }
   }
 
@@ -85,16 +85,14 @@ export default function Login() {
           >
             {message}
           </p>
-          <h1 className={`login-signup-h1 ${theme}`}>
-            {/*Log In*/}Авторизація
-          </h1>
+          <h1 className={`login-signup-h1 ${theme}`}>Log In</h1>
           <input
             type="text"
             name="username"
             id="username"
             ref={userNameRef}
             className={`login-signup-input ${theme}`}
-            placeholder="Ім'я користувача" /*"User Name"*/
+            placeholder="User Name"
             style={{
               backgroundColor: color,
             }}
@@ -106,7 +104,7 @@ export default function Login() {
             id="password"
             ref={passwordRef}
             className={`login-signup-input ${theme}`}
-            placeholder="Пароль" /*"Password"*/
+            placeholder="Password"
             style={{
               backgroundColor: color,
             }}
@@ -124,20 +122,20 @@ export default function Login() {
 
           <p className={`remember-checkbox ${theme}`}>
             <input type="checkbox" ref={rememberRef} />
-            {/*Remember me*/}Запам'ятати мене
+            Remember me
           </p>
 
           <button
             className={`login-signup-btn ${theme}`}
             onClick={loignHandler}
           >
-            {/*Log In*/}Увійти
+            Log In
           </button>
           <p className={`login-signup-p ${theme}`}>
-            {/*Don't have an account yet?*/}Ще не зареєстровані?
+            Don't have an account yet?
           </p>
           <a href="/signup" className={`login-signup-a ${theme}`}>
-            {/*Let's create*/}Створити акаунт
+            Let's create
           </a>
           <br />
           <a
@@ -151,7 +149,7 @@ export default function Login() {
             }}
             href="/forgotPassword"
           >
-            {/*Forgot password?*/}Забули пароль?
+            Forgot password?
           </a>
         </div>
       </div>

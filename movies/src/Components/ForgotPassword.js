@@ -24,15 +24,15 @@ export default function ForgotPassword() {
       });
 
       if (response.status >= 400 && response.status < 500) {
-        setMessage("Неправильна електронна пошта"); //"Invalid email"
+        setMessage("Invalid email");
       }
 
       if (response.ok) {
         const data = await response.json();
-        setMessage("Перевірте Вашу пошту"); //"Check your email"
+        setMessage("Check your email");
       }
     } catch (err) {
-      setMessage("Сталася помилка. Спробуйте пізніше"); //"An error was happened. Try later"
+      setMessage("An error was happened. Try later");
     }
   }
 
@@ -63,7 +63,7 @@ export default function ForgotPassword() {
         >
           <input
             type="email"
-            placeholder="Введіть Вашу пошту" //"Enter your email"
+            placeholder="Enter your email"
             className={`login-signup-input ${theme}`}
           />
           <br />
@@ -76,7 +76,7 @@ export default function ForgotPassword() {
               window.location.href = "/";
             }}
           >
-            Назад{/*Cancel*/}
+            Cancel
           </button>
           <button
             style={{
@@ -85,7 +85,7 @@ export default function ForgotPassword() {
             className={`login-signup-btn ${theme}`}
             type="submit"
           >
-            Далі{/*Next*/}
+            Next
           </button>
         </form>
         <p className={`message-p ${theme}`}>{message}</p>

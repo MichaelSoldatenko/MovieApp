@@ -217,7 +217,7 @@ const forgotPassword = async (req, res) => {
     }
 
     const resetToken = crypto.randomBytes(32).toString("hex");
-    const resetLink = `https://movie-app-psi-inky.vercel.app/resetPassword/${resetToken}`;
+    const resetLink = `https://movie-app-psi-inky.vercel.app/resetPassword/${resetToken}`; //`https://movie-app-psi-inky.vercel.app/resetPassword/${resetToken}`  `http://localhost:3000/resetPassword/${resetToken}`
 
     user.resetToken = resetToken;
     user.resetTokenExpiry = Date.now() + 600000;
@@ -233,8 +233,8 @@ const forgotPassword = async (req, res) => {
 
     await transporter.sendMail({
       to: email,
-      subject: "Скидання паролю", //"Password Reset"
-      html: `<p>Натисніть <a href="${resetLink}">тут</a> щоб скинути Ваш пароль.</p>`, //`<p>Click <a href="${resetLink}">here</a> to reset your password.</p>`
+      subject: "Password Reset",
+      html: `<p>Click <a href="${resetLink}">here</a> to reset your password.</p>`,
     });
 
     res.json({ message: "Password reset email sent." });

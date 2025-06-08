@@ -56,7 +56,7 @@ export default function Search() {
         <form onSubmit={searchMovies}>
           <input
             type="text"
-            placeholder="Пошук" //"Search"
+            placeholder="Search"
             className={`search-input ${theme}`}
           />
           <button type="submit" id="search-btn"></button>

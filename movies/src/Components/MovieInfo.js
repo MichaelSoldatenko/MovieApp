@@ -72,7 +72,7 @@ export default function MovieInfo() {
   async function fetchMovieInfo() {
     try {
       const response = await fetch(
-        `https://api.themoviedb.org/3/movie/${movieID}?language=uk`, //en-US
+        `https://api.themoviedb.org/3/movie/${movieID}?language=en-US`,
         options
       );
 
@@ -83,10 +83,10 @@ export default function MovieInfo() {
       }
 
       if (response.status >= 400 && response.status < 500) {
-        setMessage("Неправильне ID фільму"); //"Invalid movie ID"
+        setMessage("Invalid movie ID");
       }
     } catch (err) {
-      setMessage("Фільм не знайдено"); //"Movie wasn't found"
+      setMessage("Movie wasn't found");
     }
   }
 
@@ -177,7 +177,7 @@ export default function MovieInfo() {
   async function fetchMovieVideo() {
     try {
       const response = await fetch(
-        `https://api.themoviedb.org/3/movie/${movieID}/videos?language=uk`, //en-US
+        `https://api.themoviedb.org/3/movie/${movieID}/videos?language=en-US`,
         options
       );
 
@@ -186,14 +186,14 @@ export default function MovieInfo() {
         setMovieVideo(data.results);
       }
     } catch (err) {
-      setMessage("Відео не знайдено"); //"Video wasn't found"
+      setMessage("Video wasn't found");
     }
   }
 
   async function fetchSimilarMovies() {
     try {
       const response = await fetch(
-        `https://api.themoviedb.org/3/movie/${movieID}/similar?language=uk`, //en
+        `https://api.themoviedb.org/3/movie/${movieID}/similar?language=en`,
         options
       );
 
@@ -202,19 +202,16 @@ export default function MovieInfo() {
         setSimilarMovies(data.results);
       }
     } catch (err) {
-      setMessage("Фільми не знайдено"); //"Movies wasn't found"
+      setMessage("Movies wasn't found");
     }
   }
 
   function getReleaseDate(date) {
     const dateArr = date.split("-");
     const month_num = dateArr[1];
-    return `${parseInt(dateArr[2])} ${months.months_nums[month_num]} ${
+    return `${parseInt(dateArr[2])}th of ${months.months_nums[month_num]} ${
       dateArr[0]
     }`;
-    /*`${parseInt(dateArr[2])}th of ${months.months_nums[month_num]} ${
-      dateArr[0]
-    }`*/
   }
 
   function getYear(fullDate) {
@@ -306,7 +303,7 @@ export default function MovieInfo() {
                       display: `${userData.message ? "none" : "block"}`,
                     }}
                   >
-                    {/*Dislike*/}Дизлайк
+                    Dislike
                   </button>
                 ) : (
                   <button
@@ -334,7 +331,7 @@ export default function MovieInfo() {
                       display: `${userData.message ? "none" : "block"}`,
                     }}
                   >
-                    {/*Like*/}Лайк
+                    Like
                   </button>
                 )}
 
@@ -342,7 +339,7 @@ export default function MovieInfo() {
 
                 <br />
                 <p className={`main-text ${theme}`}>
-                  <b>{/*Genres:*/} Жанри: </b>
+                  <b>Genres: </b>
                   {movieInfo.genres &&
                     movieInfo.genres.map((genre) => (
                       <a
@@ -359,7 +356,7 @@ export default function MovieInfo() {
                 </p>
                 <br />
                 <p className={`main-text ${theme}`}>
-                  <b>{/*Countries:*/}Країни: </b>
+                  <b>Countries: </b>
                   {movieInfo.production_countries &&
                     movieInfo.production_countries.map(
                       (country) => country.name + " "
@@ -367,7 +364,7 @@ export default function MovieInfo() {
                 </p>
                 <br />
                 <p className={`main-text ${theme}`}>
-                  <b>{/*Release date:*/}Дата релізу: </b>
+                  <b>Release date: </b>
                   {movieInfo.release_date &&
                     getReleaseDate(movieInfo.release_date)}
                 </p>
@@ -377,11 +374,11 @@ export default function MovieInfo() {
                   }}
                   className={`main-text ${theme}`}
                 >
-                  <b>{/*Overview:*/}Огляд: </b>
+                  <b>Overview: </b>
                   {movieInfo.overview}
                 </p>
                 <p className={`main-text ${theme}`}>
-                  <b>{/*Rate:*/}Рейтинг: </b>
+                  <b>Rate: </b>
                   {movieInfo.vote_average && movieInfo.vote_average.toFixed(1)}
                   /10
                 </p>
@@ -411,7 +408,7 @@ export default function MovieInfo() {
                   left: "50%",
                 }}
               >
-                {/*There is no video available*/}Немає доступних відео
+                There is no video available
               </p>
             )}
 
@@ -420,13 +417,11 @@ export default function MovieInfo() {
                 color: `${theme === "dark-theme" ? "white" : "black"}`,
               }}
             >
-              {/*Comments:*/}Коментарі:
+              Comments:
             </h3>
             <Comments movieID={movieID} user={userData} />
 
-            <h3 className={`similar-movies-h3 ${theme}`}>
-              {/*Similar movies:*/}Подібні фільми:
-            </h3>
+            <h3 className={`similar-movies-h3 ${theme}`}>Similar movies:</h3>
 
             <div
               className="movie-list-div"
