@@ -208,7 +208,8 @@ export default function Profile() {
     <div>
       <TopBar />
 
-      {localStorage.getItem("token") !== "null" ? (
+      {localStorage.getItem("token") !== null &&
+      localStorage.getItem("token") !== "null" ? (
         <div>
           <div className={`modal-background ${deleteWindow}`}>
             <div className={`modal-div ${theme}`}>

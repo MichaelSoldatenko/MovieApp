@@ -45,7 +45,10 @@ export default function Login() {
       if (response.ok) {
         const data = await response.json();
         localStorage.setItem("token", data.token);
-        if (localStorage.getItem("preferences") !== "null")
+        if (
+          localStorage.getItem("preferences") !== null &&
+          localStorage.getItem("preferences") !== "null"
+        )
           window.location.href = "/home";
         else window.location.href = "/preferences";
       }

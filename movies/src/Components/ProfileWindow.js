@@ -59,7 +59,8 @@ export default function ProfileWindow(props) {
         )}
       </button>
       <div className={`profile-div ${theme} ${hidden}`}>
-        {localStorage.getItem("token") === "null" ? (
+        {localStorage.getItem("token") === null ||
+        localStorage.getItem("token") === "null" ? (
           <button
             className={`login-btn ${theme}`}
             onClick={() => {
